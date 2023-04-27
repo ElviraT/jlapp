@@ -172,7 +172,7 @@ html[data-topbar-color="brand"] {
     font-weight: 700;
 }
 .navbar-custom {
-    background: var(--ct-topbar-bg);
+    background: #A2D45E;
     min-height: var(--ct-topbar-height);
     top: 0;
     position: sticky;

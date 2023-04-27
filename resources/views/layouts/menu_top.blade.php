@@ -1,5 +1,5 @@
 <div class="navbar-custom">
-    <div class="topbar">
+    <div class="topbar p-0">
         <div class="topbar-menu d-flex align-items-center gap-1">
 
             <!-- Sidebar Menu Toggle Button -->
@@ -21,7 +21,7 @@
                 <a class="nav-link dropdown-toggle waves-effect waves-light arrow-none" data-bs-toggle="dropdown"
                     href="#" role="button" aria-haspopup="false" aria-expanded="false">
                     <i class="fe-bell font-22"></i>
-                    <span class="badge bg-danger rounded-circle noti-icon-badge">9</span>
+                    <span class="badge bg-light rounded-circle noti-icon-badge">9</span>
                 </a>
                 <div class="dropdown-menu dropdown-menu-end dropdown-menu-animated dropdown-lg py-0">
                     <div class="p-2 border-top-0 border-start-0 border-end-0 border-dashed border">

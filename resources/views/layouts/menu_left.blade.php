@@ -4,12 +4,15 @@
     <div class="logo-box">
         <!-- Brand Logo Light -->
         <a href="/" class="logo-light">
-            <img src="" alt="usuario" class="rounde-circle">
+            <img src="{{ asset('assets/images/users/user-4.jpg') }}" alt="usuario" class="rounded-circle border-white"
+                width="20%">
             {{ auth()->user()->name . ' ' . auth()->user()->last_name }}
         </a>
 
         <!-- Brand Logo Dark -->
         <a href="/" class="logo-dark">
+            <img src="{{ asset('assets/images/users/user-4.jpg') }}" alt="usuario" class="rounded-circle border-white"
+                width="20%">
             {{ auth()->user()->name . ' ' . auth()->user()->last_name }}
         </a>
     </div>

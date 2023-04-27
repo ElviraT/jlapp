@@ -9,7 +9,7 @@
     <meta content="Coderthemes" name="author" />
 
     <!-- App favicon -->
-    <link rel="shortcut icon" href="assets/images/favicon.ico">
+    <link rel="shortcut icon" href="assets/images/icon.png">
 
     <!-- Plugins css -->
     <link href="assets/libs/flatpickr/flatpickr.min.css" rel="stylesheet" type="text/css" />
@@ -47,7 +47,7 @@
 
             <div class="content">
                 <!-- Start Content-->
-                <div class="container-fluid">
+                <div class="container-fluid p-0">
                     <div class="row">
                         @yield('content')
                     </div>
