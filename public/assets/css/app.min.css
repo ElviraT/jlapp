@@ -53,8 +53,8 @@ html[data-bs-theme="dark"] {
 html[data-menu-color="light"] {
     --ct-menu-bg: #fff;
     --ct-menu-item-color: #6c757d;
-    --ct-menu-item-hover-color: #6658dd;
-    --ct-menu-item-active-color: #6658dd;
+    --ct-menu-item-hover-color: #A2D45E;
+    --ct-menu-item-active-color: #A2D45E;
     --ct-menu-icon-twotone-fill: rgba(102, 88, 221, 0.2);
     --ct-menu-item-active-bg: rgba(102, 88, 221, 0.2);
 }

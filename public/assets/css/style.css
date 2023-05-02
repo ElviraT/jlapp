@@ -1,0 +1,29 @@
+.div-drogueria {
+    padding: 15px;
+    border-radius: 7px;
+    border: 1px solid #ada8a8;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.div-drogueria p {
+    margin-top: 10px;
+}
+.icon-drogueria {
+    background-color: #a2d45e;
+    width: 50px;
+    height: 50px;
+    border-radius: 70%;
+    color: white;
+}
+i .icon-drogueria {
+    vertical-align: top;
+    justify-content: center;
+}
+input, .input-app {
+    border: 0;
+    outline: 0;
+    background: transparent;
+    border-bottom: 1px solid #a7a4a4;
+    width: 100%;
+    color: black;
+}
+

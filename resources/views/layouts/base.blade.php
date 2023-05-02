@@ -26,6 +26,9 @@
 
     <!-- Icons css -->
     <link href="assets/css/icons.min.css" rel="stylesheet" type="text/css" />
+    {{-- stilos personalizados --}}
+    <link href="assets/css/style.css" rel="stylesheet" type="text/css" />
+
 </head>
 
 <body>
@@ -56,7 +59,7 @@
             </div> <!-- content -->
 
             <!-- Footer Start -->
-            @include('layouts.footer')
+            @yield('footer')
             <!-- end Footer -->
 
         </div>
@@ -84,6 +87,8 @@
 
     <!-- Dashboar 1 init js-->
     <script src="assets/js/pages/dashboard-1.init.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
 

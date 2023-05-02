@@ -93,7 +93,7 @@
                                 <div class="d-flex align-items-center">
                                     <div class="flex-shrink-0">
                                         <div class="notify-icon">
-                                            <img src="assets/images/users/avatar-2.jpg" class="img-fluid rounded-circle"
+                                            <img src="assets/images/users/user-4.jpg" class="img-fluid rounded-circle"
                                                 alt="" />
                                         </div>
                                     </div>
@@ -138,7 +138,7 @@
                                 <div class="d-flex align-items-center">
                                     <div class="flex-shrink-0">
                                         <div class="notify-icon">
-                                            <img src="assets/images/users/avatar-4.jpg" class="img-fluid rounded-circle"
+                                            <img src="assets/images/users/user-4.jpg" class="img-fluid rounded-circle"
                                                 alt="" />
                                         </div>
                                     </div>

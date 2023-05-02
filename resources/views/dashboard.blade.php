@@ -4,3 +4,6 @@
         @include('vista_menu_inferior.index')
     </div>
 @endsection
+@section('footer')
+    @include('layouts.footer')
+@endsection
