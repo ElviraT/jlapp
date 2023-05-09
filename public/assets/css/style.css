@@ -18,7 +18,7 @@ i .icon-drogueria {
     vertical-align: top;
     justify-content: center;
 }
-input, .input-app {
+input, .input-app, textarea {
     border: 0;
     outline: 0;
     background: transparent;

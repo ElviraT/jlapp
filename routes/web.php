@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ClientesController;
+use App\Http\Controllers\FarmaciaController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,7 +24,7 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::middleware('auth')->group(function () {
+Route::middleware(['auth'])->group(function () {
     // perfil
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
@@ -32,7 +33,10 @@ Route::middleware('auth')->group(function () {
     // clientes
     Route::get('/cliente', [ClientesController::class, 'index'])->name('cliente.index');
     Route::post('/cliente/store', [ClientesController::class, 'store'])->name('cliente.store');
-    // Route::delete('/cliente', [ClientesController::class, 'destroy'])->name('profile.destroy');
+
+    // farmacia
+    Route::get('/farmacia', [FarmaciaController::class, 'index'])->name('farmacia.index');
+    Route::post('/farmacia/store', [FarmaciaController::class, 'store'])->name('farmacia.store');
 });
 
 require __DIR__ . '/auth.php';
