@@ -31941,44 +31941,12 @@
     position: static;
     width: auto;
 }
-@font-face {
-    font-family: "Font Awesome 5 Brands";
-    font-style: normal;
-    font-weight: 400;
-    font-display: block;
-    src: url(https://coderthemes.com/ubold/layouts/assets/fonts/fa-brands-400.eot);
-    src: url(https://coderthemes.com/ubold/layouts/assets/fonts/fa-brands-400.eot?#iefix)
-            format("embedded-opentype"),
-        url(https://coderthemes.com/ubold/layouts/assets/fonts/fa-brands-400.woff2)
-            format("woff2"),
-        url(https://coderthemes.com/ubold/layouts/assets/fonts/fa-brands-400.woff)
-            format("woff"),
-        url(https://coderthemes.com/ubold/layouts/assets/fonts/fa-brands-400.ttf)
-            format("truetype"),
-        url(https://coderthemes.com/ubold/layouts/assets/fonts/fa-brands-400.svg#fontawesome)
-            format("svg");
-}
+
 .fab {
     font-family: "Font Awesome 5 Brands";
     font-weight: 400;
 }
-@font-face {
-    font-family: "Font Awesome 5 Free";
-    font-style: normal;
-    font-weight: 400;
-    font-display: block;
-    src: url(https://coderthemes.com/ubold/layouts/assets/fonts/fa-regular-400.eot);
-    src: url(https://coderthemes.com/ubold/layouts/assets/fonts/fa-regular-400.eot?#iefix)
-            format("embedded-opentype"),
-        url(https://coderthemes.com/ubold/layouts/assets/fonts/fa-regular-400.woff2)
-            format("woff2"),
-        url(https://coderthemes.com/ubold/layouts/assets/fonts/fa-regular-400.woff)
-            format("woff"),
-        url(https://coderthemes.com/ubold/layouts/assets/fonts/fa-regular-400.ttf)
-            format("truetype"),
-        url(https://coderthemes.com/ubold/layouts/assets/fonts/fa-regular-400.svg#fontawesome)
-            format("svg");
-}
+
 .far {
     font-family: "Font Awesome 5 Free";
     font-weight: 400;
@@ -31988,14 +31956,14 @@
     font-style: normal;
     font-weight: 900;
     font-display: block;
-    src: url(https://coderthemes.com/ubold/layouts/assets/fonts/fa-solid-900.eot);
+    src: url(../fonts/fa-solid-900.eot);
     src: url(https://coderthemes.com/ubold/layouts/assets/fonts/fa-solid-900.eot?#iefix)
             format("embedded-opentype"),
-        url(https://coderthemes.com/ubold/layouts/assets/fonts/fa-solid-900.woff2)
+        url(../fonts/fa-solid-900.woff2)
             format("woff2"),
-        url(https://coderthemes.com/ubold/layouts/assets/fonts/fa-solid-900.woff)
+        url(../fonts/fa-solid-900.woff)
             format("woff"),
-        url(https://coderthemes.com/ubold/layouts/assets/fonts/fa-solid-900.ttf)
+        url(../fonts/fa-solid-900.ttf)
             format("truetype"),
         url(https://coderthemes.com/ubold/layouts/assets/fonts/fa-solid-900.svg#fontawesome)
             format("svg");
@@ -32005,7 +31973,7 @@
     font-family: "Font Awesome 5 Free";
     font-weight: 900;
 }
-@font-face {
+/* @font-face {
     font-family: simple-line-icons;
     src: url(https://coderthemes.com/ubold/layouts/assets/fonts/simple-Line-Icons.eot?-i3a2kk);
     src: url(https://coderthemes.com/ubold/layouts/assets/fonts/simple-Line-Icons.eot?#iefix-i3a2kk)
@@ -32020,7 +31988,7 @@
             format("svg");
     font-weight: 400;
     font-style: normal;
-}
+} */
 .icon-action-redo,
 .icon-action-undo,
 .icon-anchor,
@@ -32783,7 +32751,7 @@
  *  - Inspired by and works great as a companion with Font Awesome
  *    "Font Awesome by Dave Gandy - http://fontawesome.io"
  */
-@font-face {
+/* @font-face {
     font-family: weathericons;
     src: url(https://coderthemes.com/ubold/layouts/assets/fonts/weathericons-regular-webfont.eot);
     src: url(https://coderthemes.com/ubold/layouts/assets/fonts/weathericons-regular-webfont.eot?#iefix)
@@ -32798,7 +32766,7 @@
             format("svg");
     font-weight: 400;
     font-style: normal;
-}
+} */
 .wi {
     display: inline-block;
     font-family: weathericons;
@@ -34545,14 +34513,14 @@
 .wi-owm-night-957:before {
     content: "\f050";
 }
-@font-face {
+/* @font-face {
     font-display: block;
     font-family: bootstrap-icons;
     src: url(https://coderthemes.com/ubold/layouts/assets/fonts/bootstrap-icons.woff2?8d200481aa7f02a2d63a331fc782cfaf)
             format("woff2"),
         url(https://coderthemes.com/ubold/layouts/assets/fonts/bootstrap-icons.woff?8d200481aa7f02a2d63a331fc782cfaf)
             format("woff");
-}
+} */
 .bi::before,
 [class*=" bi-"]::before,
 [class^="bi-"]::before {

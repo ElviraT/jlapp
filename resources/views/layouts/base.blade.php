@@ -12,8 +12,8 @@
     <link rel="shortcut icon" href="assets/images/icon.png">
 
     <!-- Plugins css -->
-    <link href="assets/libs/flatpickr/flatpickr.min.css" rel="stylesheet" type="text/css" />
-    <link href="assets/libs/selectize/css/selectize.bootstrap3.css" rel="stylesheet" type="text/css" />
+    {{-- <link href="assets/libs/flatpickr/flatpickr.min.css" rel="stylesheet" type="text/css" /> --}}
+    {{-- <link href="assets/libs/selectize/css/selectize.bootstrap3.css" rel="stylesheet" type="text/css" /> --}}
 
     <!-- Theme Config Js -->
     <script src="assets/js/head.js"></script>
@@ -26,6 +26,8 @@
 
     <!-- Icons css -->
     <link href="assets/css/icons.min.css" rel="stylesheet" type="text/css" />
+    <link href="assets/css/bootstrap4-toggle.min.css" rel="stylesheet" type="text/css" />
+    <link href="assets/css/bootstrap-datetimepicker.min.css" rel="stylesheet" type="text/css" />
     {{-- stilos personalizados --}}
     <link href="assets/css/style.css" rel="stylesheet" type="text/css" />
 
@@ -81,14 +83,20 @@
     <script src="assets/js/app.min.js"></script>
 
     <!-- Plugins js-->
-    <script src="assets/libs/flatpickr/flatpickr.min.js"></script>
-    <script src="assets/libs/apexcharts/apexcharts.min.js"></script>
-    <script src="assets/libs/selectize/js/standalone/selectize.min.js"></script>
+    {{-- <script src="assets/libs/flatpickr/flatpickr.min.js"></script> --}}
+    {{-- <script src="assets/libs/apexcharts/apexcharts.min.js"></script> --}}
+    {{-- <script src="assets/libs/selectize/js/standalone/selectize.min.js"></script> --}}
+
+    <script src="assets/js/moment.js"></script>
+    <script src="assets/js/bootstrap-datetimepicker.min.js"></script>
 
     <!-- Dashboar 1 init js-->
-    <script src="assets/js/pages/dashboard-1.init.js"></script>
+    {{-- <script src="assets/js/pages/dashboard-1.init.js"></script> --}}
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/bootstrap4-toggle.min.js"></script>
+
+    @yield('js')
 
 </body>
 

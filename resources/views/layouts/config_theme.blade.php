@@ -4,7 +4,7 @@
         <ul class="nav nav-tabs nav-bordered nav-justified w-100" role="tablist">
             <li class="nav-item">
                 <a class="nav-link active" data-bs-toggle="tab" href="#menu" role="tab">
-                    <i class="mdi mdi-cog-outline d-block font-22 my-1"></i>
+                    <i class="fas fa-clipboard-list d-block font-22 my-1"></i>
                 </a>
             </li>
             <li class="nav-item">
@@ -19,20 +19,17 @@
         <!-- Tab panes -->
         <div class="tab-content pt-0">
             <div class="tab-pane active" id="menu" role="tabpanel">
-                <div class="app-menu">
-                    <!--- Menu -->
-                    <ul class="menu">
-                        <li class="menu-item">
-                            <a href="{{ route('farmacia.index') }}" class="menu-link">
-                                <span class="menu-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
-                                        <!--! Font Awesome Pro 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
-                                        <path
-                                            d="M64 32C28.7 32 0 60.7 0 96V416c0 35.3 28.7 64 64 64H96V32H64zm64 0V480H448V32H128zM512 480c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64H480V480h32zM256 176c0-8.8 7.2-16 16-16h32c8.8 0 16 7.2 16 16v48h48c8.8 0 16 7.2 16 16v32c0 8.8-7.2 16-16 16H320v48c0 8.8-7.2 16-16 16H272c-8.8 0-16-7.2-16-16V288H208c-8.8 0-16-7.2-16-16V240c0-8.8 7.2-16 16-16h48V176z" />
-                                    </svg></span>
-                                <span class="menu-text"> Farmacias</span>
-                            </a>
-                        </li>
-                    </ul>
+                <div class="col-12 p-2">
+                    <a href="{{ route('farmacia.index') }}" class="nav-link">
+                        <span class="menu-icon"><i class="fa fa-medkit"></i></span>
+                        <span class="menu-text"> Farmacias</span>
+                    </a>
+                </div>
+                <div class="col-12 p-2">
+                    <a href="{{ route('medico.index') }}" class="nav-link">
+                        <span class="menu-icon"><i class="fas fa-user-md"></i></span>
+                        <span class="menu-text"> Medico</span>
+                    </a>
                 </div>
             </div>
             <div class="tab-pane" id="settings-tab" role="tabpanel">

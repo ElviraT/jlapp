@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ClientesController;
 use App\Http\Controllers\FarmaciaController;
+use App\Http\Controllers\MedicoController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -37,6 +38,10 @@ Route::middleware(['auth'])->group(function () {
     // farmacia
     Route::get('/farmacia', [FarmaciaController::class, 'index'])->name('farmacia.index');
     Route::post('/farmacia/store', [FarmaciaController::class, 'store'])->name('farmacia.store');
+
+    // medico
+    Route::get('/medico', [MedicoController::class, 'index'])->name('medico.index');
+    Route::post('/medico/store', [MedicoController::class, 'store'])->name('medico.store');
 });
 
 require __DIR__ . '/auth.php';
