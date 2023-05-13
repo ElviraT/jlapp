@@ -17,20 +17,29 @@
 
     <div class="offcanvas-body p-3 h-100" data-simplebar>
         <!-- Tab panes -->
+        <div class="col-md-12">
+            <input type="hidden" value="{{ auth()->user()->role }}" id="rol">
+            <input type="checkbox" id="predeterminado" name="rol-predeterminado" data-toggle="toggle"
+                data-on="Visitador" data-off="Promotor" data-width="90" data-height="30" data-size="xs">
+        </div>
         <div class="tab-content pt-0">
             <div class="tab-pane active" id="menu" role="tabpanel">
-                <div class="col-12 p-2">
-                    <a href="{{ route('farmacia.index') }}" class="nav-link">
-                        <span class="menu-icon"><i class="fa fa-medkit"></i></span>
-                        <span class="menu-text"> Farmacias</span>
-                    </a>
-                </div>
-                <div class="col-12 p-2">
-                    <a href="{{ route('medico.index') }}" class="nav-link">
-                        <span class="menu-icon"><i class="fas fa-user-md"></i></span>
-                        <span class="menu-text"> Medico</span>
-                    </a>
-                </div>
+                @canany(['Admin', 'Promotor'])
+                    <div class="col-12 p-2">
+                        <a href="{{ route('farmacia.index') }}" class="nav-link">
+                            <span class="menu-icon"><i class="fa fa-medkit"></i></span>
+                            <span class="menu-text"> Farmacias</span>
+                        </a>
+                    </div>
+                @endcanany
+                @canany(['Admin', 'Visitador'])
+                    <div class="col-12 p-2">
+                        <a href="{{ route('medico.index') }}" class="nav-link">
+                            <span class="menu-icon"><i class="fas fa-user-md"></i></span>
+                            <span class="menu-text"> Medico</span>
+                        </a>
+                    </div>
+                @endcanany
             </div>
             <div class="tab-pane" id="settings-tab" role="tabpanel">
 
