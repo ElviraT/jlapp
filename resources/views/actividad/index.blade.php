@@ -9,6 +9,7 @@
                 <a class="btn btn-success rounded-circle" data-toggle="modal" data-target="#ActivityModal"
                     href="#add_activity"><i class="fas fa-plus"></i></a>
             </div>
+            @include('message')
             <div class="col-md-12">
                 <div class="table-responsive">
                     <table id="actividad" class="table table-hover">
@@ -22,9 +23,13 @@
                         <tbody>
                             @foreach ($activities as $activity)
                                 <tr>
-                                    <td>{{ $activity->idMedico }}</td>
-                                    <td>{{ $activity->created_at }}</td>
-                                    <td></td>
+                                    <td>{{ $activity->Medical->name . ' ' . $activity->Medical->last_name }}</td>
+                                    <td>{{ date('d-m-Y', strtotime($activity->created_at)) }}</td>
+                                    <td>
+                                        @foreach ($activity->MedicalSample as $muestra)
+                                            {{ $muestra->Product->name . '-' . $muestra->cantidad }}{{ ', ' }}
+                                        @endforeach
+                                    </td>
                                 </tr>
                             @endforeach
                         </tbody>
@@ -35,17 +40,7 @@
     </div>
 @endsection
 @section('js')
-    <script type="text/javascript">
-        $(document).ready(function() {
-            $('#actividad').DataTable({
-                dom: 'Bfrtp',
-                pageLength: 5,
-                "language": {
-                    "url": "//cdn.datatables.net/plug-ins/1.10.16/i18n/Spanish.json"
-                },
-            });
-        });
-    </script>
+    @include('actividad.js')
 @endsection
 <!-- Modal -->
 <div class="modal fade" id="ActivityModal" tabindex="-1" role="dialog" aria-labelledby="ActivityModalLabel"
@@ -77,7 +72,7 @@
                                 <div class="row">
                                     <div class="col-md-6 mb-3">
                                         <label>{{ 'Muestra' }}</label>
-                                        <select id="idProduct" name="idProduct" class="input-app" style="width: 100%">
+                                        <select id="id_muestra" name="idProduct" class="input-app" style="width: 100%">
                                             <option></option>
                                             @foreach ($muestras as $muestra)
                                                 <option value="{{ $muestra->id }}">{{ $muestra->name }}</option>
@@ -86,10 +81,29 @@
                                     </div>
                                     <div class="col-md-6 mb-3">
                                         <label>{{ 'Cantidad' }}</label>
-                                        <input type="number" id="cantidad" name="cantidad">
+                                        <input type="number" id="id_cantidad" name="cantidad">
                                     </div>
                                     <div class="col-md-12 mb-3">
-                                        <button type="button" class="btn btn-primary btn-sm">Agregar</button>
+                                        <button type="button" class="btn btn-primary btn-sm"
+                                            onclick="agregarProducto()">Agregar</button>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <table id="TablaPro" class="table table-hover">
+                                            <thead>
+                                                <tr>
+                                                    <th hidden>id</th>
+                                                    <th>Muestra</th>
+                                                    <th>Cantidad</th>
+                                                    <th>Acciones</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody id="ProSelected">
+                                                <!--Ingreso un id al tbody-->
+                                                <tr>
+
+                                                </tr>
+                                            </tbody>
+                                        </table>
                                     </div>
                                 </div>
                             </div>
@@ -102,7 +116,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                    <button type="submit" class="btn btn-primary">Guardar</button>
+                    <button type="submit" id="guardar" class="btn btn-primary">Guardar</button>
                 </div>
             </form>
         </div>

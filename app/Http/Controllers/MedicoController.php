@@ -9,6 +9,7 @@ use App\Models\Modality;
 use App\Models\Medical;
 use App\Models\Timetable;
 use App\Models\Activity;
+use App\Models\MedicalSample;
 use App\Models\Product;
 use Illuminate\Support\Facades\DB;
 
@@ -81,5 +82,40 @@ class MedicoController extends Controller
         $muestras = Product::all();
         $activities= Activity::all();
         return view('actividad.index', compact('activities','medicos','muestras'));
+    }
+
+    public function activity_store()
+    {
+        $data = array();
+        foreach($_POST as $key => $value) {  //Recibo el los valores por POST 
+          $data[$key] = $value;  
+       }
+
+       $activity = [
+        'idMedico' => $data['idMedico'],
+        'observations' => $data['observation']
+    ];
+    
+    try {
+        DB::beginTransaction();
+        $act = Activity::create($activity);
+
+        for($i=0; $i<count($data['cantidad']); $i ++ ){
+            $detalle = [
+                'idProduct' => $data['muestra_id'][$i],
+                'idActivity' => $act->id,
+                'cantidad' => $data['cantidad'][$i]
+            ];
+    
+            MedicalSample::create($detalle);
+        }        
+        DB::commit();
+        return redirect()->route('medico.activity')->with('success', 'Registro agregado con exito!.');
+    } catch (\Illuminate\Database\QueryException $e) {
+        DB::rollBack();
+        return redirect()->route('medico.activity')->with('error', 'Ocurrió un error, por favor intente de nuevo!.');
+    }
+       
+        
     }
 }
