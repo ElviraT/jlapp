@@ -31,6 +31,14 @@
                             <span class="menu-text"> Farmacias</span>
                         </a>
                     </div>
+                    <div class="col-12 p-2">
+                        <a href="{{ route('farmacia.activity') }}" class="nav-link">
+                            <span class="menu-icon">
+                                <i class="fas fa-calendar-check"></i>
+                            </span>
+                            <span class="menu-text"> Registro de Actividad</span>
+                        </a>
+                    </div>
                 @endcanany
                 @canany(['Admin', 'Visitador'])
                     <div class="col-12 p-2">

@@ -46,7 +46,7 @@
 <div class="modal fade" id="ActivityModal" tabindex="-1" role="dialog" aria-labelledby="ActivityModalLabel"
     aria-hidden="true">
     <div class="modal-dialog" role="document">
-        <div class="modal-content">
+        <div class="modal-content p-2">
             <div class="modal-header">
                 <h5 class="modal-title" id="ActivityModalLabel">Agregar Registro de Actividades</h5>
             </div>
@@ -69,7 +69,7 @@
                                     <h3>Muestras Medicas</h3>
                                 </strong>
                                 <hr>
-                                <div class="row">
+                                <div class="row p-2 mb-3" style="border: 1px solid #999797">
                                     <div class="col-md-6 mb-3">
                                         <label>{{ 'Muestra' }}</label>
                                         <select id="id_muestra" name="idProduct" class="input-app" style="width: 100%">

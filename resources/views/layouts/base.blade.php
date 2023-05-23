@@ -99,7 +99,6 @@
     <script>
         $(document).ready(function() {
             var valor = $('#rol').val();
-            console.log(valor);
             if (valor == 'Visitador') {
                 $('#predeterminado').bootstrapToggle('on');
             } else {
@@ -121,6 +120,11 @@
                     }
                 })
             })
+            window.setTimeout(function() {
+                $(".alert-block").fadeTo(500, 0).slideUp(500, function() {
+                    $(this).remove();
+                });
+            }, 5000);
         })
     </script>
 

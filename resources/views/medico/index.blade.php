@@ -1,6 +1,7 @@
 @extends('layouts.base')
 @section('content')
     <div class="card p-1">
+        @include('message')
         <div class="row mt-1">
             <form action="{{ route('medico.store') }}" method="POST">
                 <div class="modal-body">

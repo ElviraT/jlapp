@@ -30,13 +30,11 @@ Route::middleware(['auth', 'permission'])->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
-    // clientes
-    Route::get('/cliente', [ClientesController::class, 'index'])->name('cliente.index');
-    Route::post('/cliente/store', [ClientesController::class, 'store'])->name('cliente.store');
-
     // farmacia
     Route::get('/farmacia', [FarmaciaController::class, 'index'])->name('farmacia.index');
     Route::post('/farmacia/store', [FarmaciaController::class, 'store'])->name('farmacia.store');
+    Route::get('/actividad_log', [FarmaciaController::class, 'activity'])->name('farmacia.activity');
+    Route::post('/actividad_log/add', [FarmaciaController::class, 'activity_store'])->name('farmacia.actividad.store');
 
     // medico
     Route::get('/medico', [MedicoController::class, 'index'])->name('medico.index');

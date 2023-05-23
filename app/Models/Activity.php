@@ -10,6 +10,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class Activity extends Model
 {
     use HasFactory;
+    protected $table = 'activities';
     protected $fillable = [
         'idMedico','observations'
     ];

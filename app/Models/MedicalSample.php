@@ -10,6 +10,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class MedicalSample extends Model
 {
     use HasFactory;
+    protected $table = 'medical_samples';
     protected $fillable = [
         'idProduct','idActivity','cantidad'
     ];

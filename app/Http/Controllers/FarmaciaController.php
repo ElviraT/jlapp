@@ -6,6 +6,10 @@ use Illuminate\Http\Request;
 use App\Models\Zone;
 use App\Models\Pharmacy;
 use App\Models\Contact;
+use App\Models\Product;
+use App\Models\ActivityLogF;
+use App\Models\RegisterTransfer;
+use App\Models\RegisterWorkingday;
 use Illuminate\Support\Facades\DB;
 
 class FarmaciaController extends Controller
@@ -49,5 +53,13 @@ class FarmaciaController extends Controller
             DB::rollBack();
             return redirect()->route('farmacia.index')->with('error', 'Ocurrió un error, por favor intente de nuevo!.');
         }
+    }
+
+    public function activity()
+    {
+        $farmacias = Pharmacy::all();
+        $muestras = Product::all();
+        $activities= ActivityLogF::all();
+        return view('actividad_log.index', compact('activities','farmacias','muestras'));
     }
 }

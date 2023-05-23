@@ -12,7 +12,7 @@ use Spatie\Permission\Traits\HasRoles;
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable, HasRoles;
-    protected $table = "users"; // <-- El nombre personalizado
+    protected $table = "users";
     /**
      * The attributes that are mass assignable.
      *

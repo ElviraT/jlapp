@@ -34,6 +34,7 @@ class ProfileController extends Controller
         }
 
         $request->user()->save();
+        dd(auth()->user()->first_time);
         if (auth()->user()->first_time == 0) {
             $user = User::find(auth()->user()->id);
             $user->first_time = '1';

@@ -23,7 +23,7 @@
 @endif
 
 @if ($errors->any())
-    <div class="alert alert-danger">
+    <div class="alert alert-danger alert-block">
         Please check the form below for errors
     </div>
 @endif
