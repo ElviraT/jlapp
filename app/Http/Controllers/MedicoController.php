@@ -8,6 +8,8 @@ use App\Models\Zone;
 use App\Models\Modality;
 use App\Models\Medical;
 use App\Models\Timetable;
+use App\Models\Activity;
+use App\Models\Product;
 use Illuminate\Support\Facades\DB;
 
 class MedicoController extends Controller
@@ -71,5 +73,13 @@ class MedicoController extends Controller
             DB::rollBack();
             return redirect()->route('medico.index')->with('error', 'Ocurrió un error, por favor intente de nuevo!.');
         }
+    }
+
+    public function activity()
+    {
+        $medicos = Medical::all();
+        $muestras = Product::all();
+        $activities= Activity::all();
+        return view('actividad.index', compact('activities','medicos','muestras'));
     }
 }

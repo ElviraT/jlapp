@@ -96,6 +96,34 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
     <script src="assets/js/bootstrap4-toggle.min.js"></script>
 
+    <script>
+        $(document).ready(function() {
+            var valor = $('#rol').val();
+            console.log(valor);
+            if (valor == 'Visitador') {
+                $('#predeterminado').bootstrapToggle('on');
+            } else {
+                $('#predeterminado').bootstrapToggle('off');
+            }
+
+            $("#predeterminado").on('change', function(e) {
+                var rol = ''
+                if ($(this).is(":checked")) {
+                    rol = 'Visitador';
+                    url = "medico";
+                } else {
+                    rol = 'Promotor';
+                    url = "farmacia";
+                }
+                $.getJSON('cambio-rol/' + rol, function(data) {
+                    if (data == 'success') {
+                        $(location).attr('href', url);
+                    }
+                })
+            })
+        })
+    </script>
+
     @yield('js')
 
 </body>

@@ -41,6 +41,8 @@ Route::middleware(['auth', 'permission'])->group(function () {
     // medico
     Route::get('/medico', [MedicoController::class, 'index'])->name('medico.index');
     Route::post('/medico/store', [MedicoController::class, 'store'])->name('medico.store');
+    Route::get('/actividad', [MedicoController::class, 'activity'])->name('medico.activity');
+    Route::post('/actividad/add', [MedicoController::class, 'activity_store'])->name('actividad.store');
 
     // cambio de rol
     Route::get('/cambio-rol/{rol}', [DashboardController::class, 'rol']);
