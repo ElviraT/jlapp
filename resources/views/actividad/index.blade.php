@@ -60,7 +60,9 @@
                                 <select id="idMedico" name="idMedico" class="input-app" style="width: 100%">
                                     <option></option>
                                     @foreach ($medicos as $medico)
-                                        <option value="{{ $medico->id }}">{{ $medico->name }}</option>
+                                        <option value="{{ $medico->id }}">
+                                            {{ $medico->name . ' ' . $medico->last_name }}
+                                        </option>
                                     @endforeach
                                 </select>
                             </div>
