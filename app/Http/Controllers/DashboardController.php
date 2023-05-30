@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Category;
-use App\Models\Product;
+use App\Models\RegisterTransfer;
 
 class DashboardController extends Controller
 {
@@ -27,7 +27,9 @@ class DashboardController extends Controller
         }
         # Al final de todo, invocamos a paginate que tendrá todos los filtros
         $categories = $builder->where('status', '1')->get();
-        return view('dashboard', compact('categories','buscar'));
+        $user= User::where('id', auth()->user()->id)->first();
+        $transferencias = RegisterTransfer::all();
+        return view('dashboard', compact('categories','buscar','user','transferencias'));
     }
     public function rol($rol)
     {

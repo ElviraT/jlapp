@@ -19,6 +19,10 @@ class RegisterTransfer extends Model
     {
        return $this->belongsTo(Product::class, 'idProduct');
     }
+    public function Pharmacy(): BelongsTo
+    {
+       return $this->belongsTo(Pharmacy::class, 'idPharmacyT');
+    }
     public function ActivityLogF(): HasMany
     {
        return $this->hasMany(ActivityLogF::class, 'idActivity');

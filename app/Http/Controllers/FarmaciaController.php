@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\TransferEvent;
 use Illuminate\Http\Request;
 use App\Models\Zone;
 use App\Models\Pharmacy;
@@ -10,6 +11,8 @@ use App\Models\Product;
 use App\Models\ActivityLogF;
 use App\Models\RegisterTransfer;
 use App\Models\RegisterWorkingday;
+use App\Models\User;
+use App\Notifications\TransferNotification;
 use Illuminate\Support\Facades\DB;
 
 class FarmaciaController extends Controller
@@ -94,8 +97,15 @@ class FarmaciaController extends Controller
                         'cantidad' => $post['cantidad'][$i],
                         'idPharmacyT' => $post['idPharmacyT'][$i]
                     ];
+                    $transfer =RegisterTransfer::create($detalle);
+                    // $transfer = [
+                    //     'idProduct' => $post['muestra'][$i],
+                    //     'cantidad' => $post['cantidad'][$i],
+                    //     'idPharmacyT' => $post['pharmat'][$i]
+                    // ];
 
-                    RegisterTransfer::create($detalle);
+                    
+                    event(new TransferEvent($transfer));
                 } 
             }else{
                 $detallewd = [

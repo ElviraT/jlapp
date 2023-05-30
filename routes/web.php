@@ -48,6 +48,10 @@ Route::middleware(['auth', 'permission'])->group(function () {
     // cambio de rol
     Route::get('/cambio-rol/{rol}', [DashboardController::class, 'rol'])->name('cambio.rol');
     
+    Route::get('markAsRead', function(){
+        auth()->user()->unreadNotifications->markAsRead();
+        return redirect()->back();
+    })->name('markAsRead');
 });
 
 require __DIR__ . '/auth.php';

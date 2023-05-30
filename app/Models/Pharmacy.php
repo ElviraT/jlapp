@@ -26,4 +26,8 @@ class Pharmacy extends Model
     {
        return $this->hasMany(ActivityLogF::class, 'id');
     }
+    public function RegisterTransfer(): HasMany
+    {
+       return $this->hasMany(RegisterTransfer::class, 'idPharmacyT');
+    }
 }

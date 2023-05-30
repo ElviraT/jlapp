@@ -26,4 +26,7 @@ input, .input-app, textarea {
     width: 100%;
     color: black;
 }
-
+.img-drogueria {
+    width: 85px !important;
+    height: 85px !important;
+}

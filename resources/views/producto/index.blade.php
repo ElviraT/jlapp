@@ -5,14 +5,21 @@
             <div class="card p-0">
                 <div class="col-md-12">
                     <div class="row">
-                        <div class="col-md-4">
-                            <img class="img-fluid img-drogueria" src="{{ $product->img }}" alt="{{ $product->name }}" />
+                        <div class="col-3">
+                            <div class="row">
+                                <img class="img-fluid img-drogueria" src="{{ env('APP_URL_WEB') . $product->img }}"
+                                    alt="{{ $product->name }}" />
+                            </div>
                         </div>
-                        <div class="col-8 mt-2 p-0">
-                            <p>{{ $product->name }}</p>
+                        <div class="col-9 mt-1">
+                            <div class="row">
+                                <strong>
+                                    <p>{{ $product->name }}</p>
+                                </strong>
+                                <div class="col-6" align='left'>{{ '$ ' }}{{ $product->price_tf }}</div>
+                                <div class="col-6" align='rigth'>{{ 'Cantidad: ' }}{{ $product->quantity }}</div>
+                            </div>
                         </div>
-                        <div class="col-6" align='left'>{{ $product->price_dg }}</div>
-                        <div class="col-6" align='rigth'>{{ $product->quantity }}</div>
                     </div>
                 </div>
             </div>

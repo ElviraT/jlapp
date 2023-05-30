@@ -3,7 +3,7 @@
     <!-- Brand Logo -->
     <div class="logo-box">
         <!-- Brand Logo Light -->
-        <a href="dashboard">
+        <a href="{{ route('dashboard') }}">
             <img src="{{ asset('assets/images/users/user-4.jpg') }}" alt="usuario" class="rounded-circle border-white"
                 width="20%">
             {{ auth()->user()->name . ' ' . auth()->user()->last_name }}

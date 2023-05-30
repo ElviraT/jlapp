@@ -9,23 +9,24 @@
     <meta content="Coderthemes" name="author" />
 
     <!-- App favicon -->
-    <link rel="shortcut icon" href="assets/images/icon.png">
+    <link rel="shortcut icon" href="{{ asset('assets/images/icon.png') }}">
 
     <!-- Theme Config Js -->
-    <script src="assets/js/head.js"></script>
+    <script src="{{ asset('assets/js/head.js') }}"></script>
 
     <!-- Bootstrap css -->
-    <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" id="app-style" />
+    <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" id="app-style" />
 
     <!-- App css -->
-    <link href="assets/css/app.min.css" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('assets/css/app.min.css') }}" rel="stylesheet" type="text/css" />
 
     <!-- Icons css -->
-    <link href="assets/css/icons.min.css" rel="stylesheet" type="text/css" />
-    <link href="assets/css/bootstrap4-toggle.min.css" rel="stylesheet" type="text/css" />
-    <link href="assets/css/bootstrap-datetimepicker.min.css" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('assets/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('assets/css/bootstrap4-toggle.min.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('assets/css/bootstrap-datetimepicker.min.css') }}" rel="stylesheet" type="text/css" />
     {{-- stilos personalizados --}}
-    <link href="assets/css/style.css" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet" type="text/css" />
+    @yield('css')
 
 </head>
 
@@ -73,18 +74,18 @@
     @include('layouts.config_theme')
 
     <!-- Vendor js -->
-    <script src="assets/js/vendor.min.js"></script>
+    <script src="{{ asset('assets/js/vendor.min.js') }}"></script>
 
     <!-- App js -->
-    <script src="assets/js/app.min.js"></script>
+    <script src="{{ asset('assets/js/app.min.js') }}"></script>
 
-    <script src="assets/js/moment.js"></script>
-    <script src="assets/js/bootstrap-datetimepicker.min.js"></script>
+    <script src="{{ asset('assets/js/moment.js') }}"></script>
+    <script src="{{ asset('assets/js/bootstrap-datetimepicker.min.js') }}"></script>
 
     <!-- Dashboar 1 init js-->
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="assets/js/bootstrap4-toggle.min.js"></script>
+    <script src="{{ asset('assets/js/bootstrap4-toggle.min.js') }}"></script>
 
     <script>
         $(document).ready(function() {
