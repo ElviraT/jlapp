@@ -62,4 +62,58 @@ class FarmaciaController extends Controller
         $activities= ActivityLogF::all();
         return view('actividad_log.index', compact('activities','farmacias','muestras'));
     }
+
+    public function activity_store()
+    {
+        $post = array();
+        foreach($_POST as $key => $value) {  //Recibo los valores por POST 
+          $post[$key] = $value;  
+       }
+
+       if (isset($post['jornada'])) {
+            $jornada = 1;
+        } else {
+            $jornada = 0;
+        }
+
+       $activitylg = [
+        'idPharmacy' => $post['idPharmacy'],
+        'observations' => $post['observation'],
+        'jornada' => $jornada
+        ];
+    
+        try {
+            DB::beginTransaction();
+            $actlg = ActivityLogF::create($activitylg);
+
+            if($jornada == 0){
+                for($i=0; $i<count($post['cantidad']); $i ++ ){
+                    $detalle = [
+                        'idProduct' => $post['muestra_id'][$i],
+                        'idActivity' => $actlg->id,
+                        'cantidad' => $post['cantidad'][$i],
+                        'idPharmacyT' => $post['idPharmacyT'][$i]
+                    ];
+
+                    RegisterTransfer::create($detalle);
+                } 
+            }else{
+                $detallewd = [
+                    'idActivity' => $actlg->id,
+                    'desde' => $post['desde'],
+                    'hasta' => $post['hasta'],
+                ];
+
+                RegisterWorkingday::create($detallewd);
+            }
+                  
+            DB::commit();
+            return redirect()->route('farmacia.activity')->with('success', 'Registro agregado con exito!.');
+        } catch (\Illuminate\Database\QueryException $e) {
+            DB::rollBack();
+            return redirect()->route('farmacia.activity')->with('error', 'Ocurrió un error, por favor intente de nuevo!.');
+        }
+       
+        
+    }
 }

@@ -1,10 +1,10 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\ClientesController;
 use App\Http\Controllers\FarmaciaController;
 use App\Http\Controllers\MedicoController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\ProductsController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -25,6 +25,9 @@ Route::get('/', function () {
 
 Route::middleware(['auth', 'permission'])->group(function () {
     Route::get('/dashboard',[DashboardController::class, 'index'])->name('dashboard');
+
+    Route::get('/producto-categoria/{categoria}', [ProductsController::class, 'index'])->name('buscar.categoria');
+    
     // perfil
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
@@ -43,7 +46,8 @@ Route::middleware(['auth', 'permission'])->group(function () {
     Route::post('/actividad/add', [MedicoController::class, 'activity_store'])->name('actividad.store');
 
     // cambio de rol
-    Route::get('/cambio-rol/{rol}', [DashboardController::class, 'rol']);
+    Route::get('/cambio-rol/{rol}', [DashboardController::class, 'rol'])->name('cambio.rol');
+    
 });
 
 require __DIR__ . '/auth.php';

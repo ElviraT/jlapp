@@ -25,25 +25,34 @@
                         <tbody>
                             @foreach ($activities as $activity)
                                 <tr>
-                                    <td>{{ $activity->Medical->name }}</td>
+                                    <td>{{ $activity->Pharmacy->name }}</td>
                                     <td>
                                         @if ($activity->jornada == 1)
                                             <input type="checkbox" name="status" data-toggle="toggle" data-style="ios"
-                                                data-on="Activo" data-off="Inactivo" data-onstyle="success"
-                                                data-offstyle="danger" checked disabled data-width="90" data-height="30">
+                                                data-on="Si" data-off="No" data-onstyle="success" data-offstyle="default"
+                                                checked disabled data-size="mini">
                                         @else
                                             <input type="checkbox" name="status" data-toggle="toggle" data-style="ios"
-                                                data-on="Activo" data-off="Inactivo" data-onstyle="success"
-                                                data-offstyle="danger" disabled data-width="90" data-height="30">
+                                                data-off="No" disabled data-size="mini" data-offstyle="warning">
                                         @endif
                                     </td>
                                     <td>{{ date('d-m-Y', strtotime($activity->created_at)) }}</td>
-                                    <td>{{ date('h:m', strtotime($activity->created_at)) }}</td>
-                                    <td>
-                                        {{-- @foreach ($activity->MedicalSample as $muestra)
-                                            {{ $muestra->Product->name . '-' . $muestra->cantidad }}{{ ', ' }}
-                                        @endforeach --}}
-                                    </td>
+                                    @if (isset($activity->RegisterWorkingday))
+                                        <td>
+                                            {{ $activity->RegisterWorkingday->desde . '-' . $activity->RegisterWorkingday->hasta }}{{ ', ' }}
+                                        </td>
+                                    @else
+                                        <td></td>
+                                    @endif
+                                    @if (isset($activity->RegisterTransfer))
+                                        <td>
+                                            @foreach ($activity->RegisterTransfer as $muestra)
+                                                {{ $muestra->Product->name . '-' . $muestra->cantidad }}{{ ', ' }}
+                                            @endforeach
+                                        </td>
+                                    @else
+                                        <td></td>
+                                    @endif
                                 </tr>
                             @endforeach
                         </tbody>
@@ -59,7 +68,7 @@
 <!-- Modal -->
 <div class="modal fade" id="Activity_logModal" tabindex="-1" role="dialog" aria-labelledby="Activity_logModalLabel"
     aria-hidden="true">
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content p-2">
             <div class="modal-header">
                 <h5 class="modal-title" id="ActivityModalLabel">Agregar Registro de Actividades</h5>
@@ -123,8 +132,10 @@
                                                 <thead>
                                                     <tr>
                                                         <th hidden>id</th>
-                                                        <th>Muestra</th>
+                                                        <th hidden>idphar</th>
+                                                        <th>Medicina</th>
                                                         <th>Cantidad</th>
+                                                        <th>Farmaceutica</th>
                                                         <th>Acciones</th>
                                                     </tr>
                                                 </thead>

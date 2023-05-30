@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Pharmacy extends Model
 {
@@ -21,4 +22,8 @@ class Pharmacy extends Model
         'idZone',
         'status',
     ];
+    public function ActivityLogF(): HasMany
+    {
+       return $this->hasMany(ActivityLogF::class, 'id');
+    }
 }

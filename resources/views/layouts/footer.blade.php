@@ -11,18 +11,12 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" data-bs-toggle="tab" href="#menu2" role="tab">
-                            <i class="mdi mdi-cart-outline d-block font-15"></i>
-                            <small>Carrito</small>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" data-bs-toggle="tab" href="#menu3" role="tab">
                             <i class="mdi mdi-file-check-outline d-block font-15"></i>
                             <small>Pedidos</small>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" data-bs-toggle="tab" href="#menu4" role="tab">
+                        <a class="nav-link" data-bs-toggle="tab" href="#menu3" role="tab">
                             <i class="mdi mdi-account-circle-outline d-block font-15"></i>
                             <small>Perfil</small>
                         </a>

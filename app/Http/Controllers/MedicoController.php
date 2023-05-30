@@ -94,27 +94,27 @@ class MedicoController extends Controller
        $activity = [
         'idMedico' => $data['idMedico'],
         'observations' => $data['observation']
-    ];
+        ];
     
-    try {
-        DB::beginTransaction();
-        $act = Activity::create($activity);
+        try {
+            DB::beginTransaction();
+            $act = Activity::create($activity);
 
-        for($i=0; $i<count($data['cantidad']); $i ++ ){
-            $detalle = [
-                'idProduct' => $data['muestra_id'][$i],
-                'idActivity' => $act->id,
-                'cantidad' => $data['cantidad'][$i]
-            ];
-    
-            MedicalSample::create($detalle);
-        }        
-        DB::commit();
-        return redirect()->route('medico.activity')->with('success', 'Registro agregado con exito!.');
-    } catch (\Illuminate\Database\QueryException $e) {
-        DB::rollBack();
-        return redirect()->route('medico.activity')->with('error', 'Ocurrió un error, por favor intente de nuevo!.');
-    }
+            for($i=0; $i<count($data['cantidad']); $i ++ ){
+                $detalle = [
+                    'idProduct' => $data['muestra_id'][$i],
+                    'idActivity' => $act->id,
+                    'cantidad' => $data['cantidad'][$i]
+                ];
+        
+                MedicalSample::create($detalle);
+            }        
+            DB::commit();
+            return redirect()->route('medico.activity')->with('success', 'Registro agregado con exito!.');
+        } catch (\Illuminate\Database\QueryException $e) {
+            DB::rollBack();
+            return redirect()->route('medico.activity')->with('error', 'Ocurrió un error, por favor intente de nuevo!.');
+        }
        
         
     }
