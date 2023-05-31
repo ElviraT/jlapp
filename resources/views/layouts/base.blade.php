@@ -117,6 +117,19 @@
                 });
             }, 5000);
         })
+
+        $(document).ready(function() {
+            var pageRefresh = 60000; //1 m
+            setInterval(function() {
+                refresh();
+            }, pageRefresh);
+        });
+
+        // Functions
+
+        function refresh() {
+            $('#div_notify').load(location.href + " #div_notify");
+        }
     </script>
 
     @yield('js')

@@ -95,15 +95,11 @@ class FarmaciaController extends Controller
                         'idProduct' => $post['muestra_id'][$i],
                         'idActivity' => $actlg->id,
                         'cantidad' => $post['cantidad'][$i],
-                        'idPharmacyT' => $post['idPharmacyT'][$i]
+                        'idPharmacyT' => $post['idPharmacyT'][$i],
+                        'muestra' => $post['muestra'][$i],
+                        'pharmacy' => $post['pharmat'][$i]
                     ];
                     $transfer =RegisterTransfer::create($detalle);
-                    // $transfer = [
-                    //     'idProduct' => $post['muestra'][$i],
-                    //     'cantidad' => $post['cantidad'][$i],
-                    //     'idPharmacyT' => $post['pharmat'][$i]
-                    // ];
-
                     
                     event(new TransferEvent($transfer));
                 } 

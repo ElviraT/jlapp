@@ -46,8 +46,8 @@ class TransferNotification extends Notification
     public function toArray(object $notifiable): array
     {
         return [
-            'idProduct' => $this->transfer->idProduct,
-            'idPharmacyT' => $this->transfer->idPharmacyT,
+            'muestra' => $this->transfer->muestra,
+            'pharmacy' => $this->transfer->pharmacy,
             'cantidad' => $this->transfer->cantidad,
             'time' => Carbon::now()->diffForHumans()
             

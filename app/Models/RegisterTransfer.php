@@ -13,7 +13,7 @@ class RegisterTransfer extends Model
     protected $table = 'register_transfers';
 
     protected $fillable = [
-        'idProduct','idActivity','idPharmacyT','cantidad'
+        'idProduct','idActivity','idPharmacyT','cantidad','muestra','pharmacy'
     ];
     public function Product(): BelongsTo
     {
