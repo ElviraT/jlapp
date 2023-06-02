@@ -16,7 +16,7 @@
                                 <strong>
                                     <p>{{ $product->name }}</p>
                                 </strong>
-                                <div class="col-6" align='left'>{{ '$ ' }}{{ $product->price_tf }}</div>
+                                {{-- <div class="col-6" align='left'>{{ '$ ' }}{{ $product->price_tf }}</div> --}}
                                 <div class="col-6" align='rigth'>{{ 'Cantidad: ' }}{{ $product->quantity }}</div>
                             </div>
                         </div>

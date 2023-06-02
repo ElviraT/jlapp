@@ -17,8 +17,7 @@
                                 </p>
                             </strong>
                             <hr>
-                            <div class="col-6" align='left'>
-                                {{ '$ ' }}{{ $transferencia->Product->price_tf }}</div>
+                            {{-- <div class="col-6" align='left'>{{ '$ ' }}{{ $transferencia->Product->price_tf }}</div> --}}
                             <div class="col-6" align='rigth'>{{ 'Cantidad: ' }}{{ $transferencia->cantidad }}</div>
                         </div>
                     </div>
