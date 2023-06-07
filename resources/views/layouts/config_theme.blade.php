@@ -17,13 +17,13 @@
 
     <div class="offcanvas-body p-3 h-100" data-simplebar>
         <!-- Tab panes -->
-        @can('Visitador y Promotor')
+        @canany(['Visitador', 'Promotor'])
             <div class="col-md-12">
                 <input type="hidden" value="{{ auth()->user()->role }}" id="rol">
                 <input type="checkbox" id="predeterminado" name="rol-predeterminado" data-toggle="toggle"
                     data-on="Visitador" data-off="Promotor" data-width="90" data-height="30" data-size="xs">
             </div>
-        @endcan
+        @endcanany
         <div class="tab-content pt-0">
             <div class="tab-pane active" id="menu" role="tabpanel">
                 @canany(['Admin', 'Promotor'])

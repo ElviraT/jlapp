@@ -30,7 +30,7 @@ class AuthenticatedSessionController extends Controller
         $request->session()->regenerate();
 
 
-
+        
         if (isset(auth()->user()->first_time) && auth()->user()->first_time == 0) {
             return redirect('/profile');
         } else {
