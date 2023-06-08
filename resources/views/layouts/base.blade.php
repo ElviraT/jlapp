@@ -100,14 +100,14 @@
                 var rol = ''
                 if ($(this).is(":checked")) {
                     rol = 'Visitador';
-                    url = "medico";
                 } else {
                     rol = 'Promotor';
-                    url = "farmacia";
                 }
-                $.getJSON('cambio-rol/' + rol, function(data) {
+                let url = '{{ route('cambio.rol', ['rol' => ':rol']) }}';
+                url = url.replace(':rol', rol);
+                $.getJSON(url, function(data) {
                     if (data == 'success') {
-                        $(location).attr('href', url);
+                        $(location).attr('href', '{{ route('dashboard') }}');
                     }
                 })
             })

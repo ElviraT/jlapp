@@ -23,11 +23,11 @@ Route::get('/', function () {
 });
 
 
-Route::middleware(['auth', 'permission'])->group(function () {
-    Route::get('/dashboard',[DashboardController::class, 'index'])->name('dashboard');
+Route::middleware(['auth'])->group(function () {
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
     Route::get('/producto-categoria/{categoria}', [ProductsController::class, 'index'])->name('buscar.categoria');
-    
+
     // perfil
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
@@ -47,8 +47,8 @@ Route::middleware(['auth', 'permission'])->group(function () {
 
     // cambio de rol
     Route::get('/cambio-rol/{rol}', [DashboardController::class, 'rol'])->name('cambio.rol');
-    
-    Route::get('markAsRead', function(){
+
+    Route::get('markAsRead', function () {
         auth()->user()->unreadNotifications->markAsRead();
         return redirect()->back();
     })->name('markAsRead');

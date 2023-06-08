@@ -12,9 +12,48 @@
 
     <!-- menu-left -->
     <div class="scrollbar">
-
+        @if (auth()->user()->roles[0]->id == '4')
+            <div class="col-md-12 mt-2" align="center">
+                <input type="hidden" value="{{ auth()->user()->role }}" id="rol">
+                <input type="checkbox" id="predeterminado" name="rol-predeterminado" data-toggle="toggle"
+                    data-on="Visitador" data-off="Promotor" data-width="90" data-height="30" data-size="xs">
+            </div>
+        @endif
         <!--- Menu -->
         <ul class="menu">
+            @canany(['Admin', 'Promotor'])
+                <li class="menu-item">
+                    <a href="{{ route('farmacia.index') }}" class="menu-link">
+                        <span class="menu-icon"><i class="fa fa-medkit"></i></span>
+                        <span class="menu-text"> Farmacias</span>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="{{ route('farmacia.activity') }}" class="menu-link">
+                        <span class="menu-icon">
+                            <i class="fas fa-calendar-check"></i>
+                        </span>
+                        <span class="menu-text"> Registro de Actividad</span>
+                    </a>
+                </li>
+            @endcanany
+            @canany(['Admin', 'Visitador'])
+                <li class="menu-item">
+                    <a href="{{ route('medico.index') }}" class="menu-link">
+                        <span class="menu-icon"><i class="fas fa-user-md"></i></span>
+                        <span class="menu-text"> Medico</span>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="{{ route('medico.activity') }}" class="menu-link">
+                        <span class="menu-icon">
+                            <i class="fas fa-calendar-check"></i>
+                        </span>
+                        <span class="menu-text"> Registro de Actividad</span>
+                    </a>
+                </li>
+            @endcanany
+            </li>
             <li class="menu-item">
                 <a href="#" class="menu-link">
                     <span class="menu-icon"><i class="fas fa-calculator"></i></span>

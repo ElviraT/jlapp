@@ -3,12 +3,7 @@
         <!-- Nav tabs -->
         <ul class="nav nav-tabs nav-bordered nav-justified w-100" role="tablist">
             <li class="nav-item">
-                <a class="nav-link active" data-bs-toggle="tab" href="#menu" role="tab">
-                    <i class="fas fa-clipboard-list d-block font-22 my-1"></i>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" data-bs-toggle="tab" href="#settings-tab" role="tab">
+                <a class="nav-link active" data-bs-toggle="tab" href="#settings-tab" role="tab">
                     <i class="mdi mdi-cog-outline d-block font-22 my-1"></i>
                 </a>
             </li>
@@ -17,49 +12,8 @@
 
     <div class="offcanvas-body p-3 h-100" data-simplebar>
         <!-- Tab panes -->
-        @canany(['Visitador', 'Promotor'])
-            <div class="col-md-12">
-                <input type="hidden" value="{{ auth()->user()->role }}" id="rol">
-                <input type="checkbox" id="predeterminado" name="rol-predeterminado" data-toggle="toggle"
-                    data-on="Visitador" data-off="Promotor" data-width="90" data-height="30" data-size="xs">
-            </div>
-        @endcanany
         <div class="tab-content pt-0">
-            <div class="tab-pane active" id="menu" role="tabpanel">
-                @canany(['Admin', 'Promotor'])
-                    <div class="col-12 p-2">
-                        <a href="{{ route('farmacia.index') }}" class="nav-link">
-                            <span class="menu-icon"><i class="fa fa-medkit"></i></span>
-                            <span class="menu-text"> Farmacias</span>
-                        </a>
-                    </div>
-                    <div class="col-12 p-2">
-                        <a href="{{ route('farmacia.activity') }}" class="nav-link">
-                            <span class="menu-icon">
-                                <i class="fas fa-calendar-check"></i>
-                            </span>
-                            <span class="menu-text"> Registro de Actividad</span>
-                        </a>
-                    </div>
-                @endcanany
-                @canany(['Admin', 'Visitador'])
-                    <div class="col-12 p-2">
-                        <a href="{{ route('medico.index') }}" class="nav-link">
-                            <span class="menu-icon"><i class="fas fa-user-md"></i></span>
-                            <span class="menu-text"> Medico</span>
-                        </a>
-                    </div>
-                    <div class="col-12 p-2">
-                        <a href="{{ route('medico.activity') }}" class="nav-link">
-                            <span class="menu-icon">
-                                <i class="fas fa-calendar-check"></i>
-                            </span>
-                            <span class="menu-text"> Registro de Actividad</span>
-                        </a>
-                    </div>
-                @endcanany
-            </div>
-            <div class="tab-pane" id="settings-tab" role="tabpanel">
+            <div class="tab-pane active" id="settings-tab" role="tabpanel">
 
                 <div class="mt-n3">
                     <h6 class="fw-medium py-2 px-3 font-13 text-uppercase bg-light mx-n3 mt-n3 mb-3">
@@ -125,20 +79,20 @@
 
                 <div class="d-flex flex-column gap-2">
                     <div class="form-check form-switch">
-                        <input class="form-check-input" type="checkbox" name="data-topbar-color"
-                            id="topbar-color-light" value="light">
+                        <input class="form-check-input" type="checkbox" name="data-topbar-color" id="topbar-color-light"
+                            value="light">
                         <label class="form-check-label" for="topbar-color-light">Light</label>
                     </div>
 
                     <div class="form-check form-switch">
-                        <input class="form-check-input" type="checkbox" name="data-topbar-color"
-                            id="topbar-color-dark" value="dark">
+                        <input class="form-check-input" type="checkbox" name="data-topbar-color" id="topbar-color-dark"
+                            value="dark">
                         <label class="form-check-label" for="topbar-color-dark">Dark</label>
                     </div>
 
                     <div class="form-check form-switch">
-                        <input class="form-check-input" type="checkbox" name="data-topbar-color"
-                            id="topbar-color-brand" value="brand">
+                        <input class="form-check-input" type="checkbox" name="data-topbar-color" id="topbar-color-brand"
+                            value="brand">
                         <label class="form-check-label" for="topbar-color-brand">Brand</label>
                     </div>
                 </div>
