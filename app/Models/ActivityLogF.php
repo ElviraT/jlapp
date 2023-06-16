@@ -10,22 +10,22 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class ActivityLogF extends Model
 {
-    use HasFactory;
-    protected $table = 'activity_log_fs';
+   use HasFactory;
+   protected $table = 'activity_log_fs';
 
-    protected $fillable = [
-        'idPharmacy','observations','jornada'
-    ];
-    public function RegisterTransfer(): HasMany
-    {
-       return $this->hasMany(RegisterTransfer::class, 'idActivity');
-    }
-    public function RegisterWorkingday(): HasOne
-    {
-       return $this->hasOne(RegisterWorkingday::class, 'idActivity');
-    }
-    public function Pharmacy(): BelongsTo
-    {
-       return $this->belongsTo(Pharmacy::class, 'idPharmacy');
-    }
+   protected $fillable = [
+      'idPharmacy', 'observations', 'jornada', 'pedido'
+   ];
+   public function RegisterTransfer(): HasMany
+   {
+      return $this->hasMany(RegisterTransfer::class, 'idActivity');
+   }
+   public function RegisterWorkingday(): HasOne
+   {
+      return $this->hasOne(RegisterWorkingday::class, 'idActivity');
+   }
+   public function Pharmacy(): BelongsTo
+   {
+      return $this->belongsTo(Pharmacy::class, 'idPharmacy');
+   }
 }

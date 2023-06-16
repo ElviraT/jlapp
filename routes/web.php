@@ -5,6 +5,7 @@ use App\Http\Controllers\FarmaciaController;
 use App\Http\Controllers\MedicoController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProductsController;
+use App\Http\Controllers\PDFController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -52,6 +53,8 @@ Route::middleware(['auth'])->group(function () {
         auth()->user()->unreadNotifications->markAsRead();
         return redirect()->back();
     })->name('markAsRead');
+
+    Route::get('pdf/{id}', [PDFController::class, 'index'])->name('genera.pdf');
 });
 
 require __DIR__ . '/auth.php';
