@@ -62,7 +62,8 @@ class FarmaciaController extends Controller
     public function activity()
     {
         $farmacias = Pharmacy::all();
-        $muestras = Product::all();
+        // $muestras = Product::all();
+        $muestras = Product::whereRaw('quantity_tf > quantity_min')->where('available', 1)->get();
         $activities = ActivityLogF::all();
         return view('actividad_log.index', compact('activities', 'farmacias', 'muestras'));
     }
@@ -104,7 +105,9 @@ class FarmaciaController extends Controller
                         'pharmacy' => $post['pharmat'][$i]
                     ];
                     $transfer = RegisterTransfer::create($detalle);
-
+                    $product = Product::find($post['muestra_id'][$i]);
+                    // dd($product);
+                    $product->update(['quantity_tf' => DB::raw('quantity_tf - ' . $post['cantidad'][$i])]);
 
                     event(new TransferEvent($transfer));
                 }
@@ -128,17 +131,5 @@ class FarmaciaController extends Controller
             DB::rollBack();
             return redirect()->route('farmacia.activity')->with('error', 'Ocurrió un error, por favor intente de nuevo!.');
         }
-    }
-
-    public function _generar_pdf($id)
-    {
-        $data = [
-            'title' => 'JL Pharma Medicinas',
-            'activity' => ActivityLogF::where('id', $id)->where('jornada', 0)->first(),
-        ];
-
-        $pdf = PDF::loadView('pdf.index', $data);
-
-        return $pdf->download('transferencia' . $id . '.pdf');
     }
 }

@@ -10,9 +10,12 @@ class Product extends Model
 {
     use HasFactory;
     protected $table = 'products';
+    protected $fillable = [
+        'quantity_tf'
+    ];
 
     public function MedicalSample(): BelongsTo
     {
-       return $this->belongsTo(MedicalSample::class, 'idProduct');
+        return $this->belongsTo(MedicalSample::class, 'idProduct');
     }
 }
