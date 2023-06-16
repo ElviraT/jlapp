@@ -62,9 +62,6 @@
         </div>
     </div>
 @endsection
-@section('js')
-    @include('actividad_log.js')
-@endsection
 <!-- Modal -->
 <div class="modal fade" id="Activity_logModal" tabindex="-1" role="dialog" aria-labelledby="Activity_logModalLabel"
     aria-hidden="true">
@@ -175,9 +172,13 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                    <button type="submit" id="guardar" class="btn btn-primary">Guardar</button>
+                    <button type="submit" id="guardar" class="btn btn-primary"
+                        onclick="enviar_pdf()">Guardar</button>
                 </div>
             </form>
         </div>
     </div>
 </div>
+@section('js')
+    @include('actividad_log.js')
+@endsection

@@ -21,7 +21,6 @@ class PDFController extends Controller
         ];
 
         $pdf = PDF::loadView('pdf.index', $data);
-
         return $pdf->download('transferencia' . $id . '.pdf');
     }
 }

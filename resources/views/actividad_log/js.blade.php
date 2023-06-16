@@ -51,4 +51,14 @@
             RefrescaProducto();
         });
     }
+
+    $(window).on("load", function(e) {
+        var idurl = new URLSearchParams(location.search);
+        var id = idurl.get('id');
+        if (id != null) {
+            let url = '{{ route('genera.pdf', ['id' => ':id']) }}';
+            url = url.replace(':id', id);
+            $(location).attr('href', url);
+        }
+    });
 </script>

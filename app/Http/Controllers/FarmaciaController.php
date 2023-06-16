@@ -108,7 +108,6 @@ class FarmaciaController extends Controller
 
                     event(new TransferEvent($transfer));
                 }
-                $pdf_view = $this->_generar_pdf($actlg->id);
             } else {
                 $detallewd = [
                     'idActivity' => $actlg->id,
@@ -120,7 +119,11 @@ class FarmaciaController extends Controller
             }
 
             DB::commit();
-            return redirect()->route('farmacia.activity')->with('success', 'Registro agregado con exito!.');
+            if ($jornada == 0) {
+                return redirect()->route('farmacia.activity', ['id' => $actlg->id])->with('success', 'Registro agregado con exito, su factura se esta generando.');
+            } else {
+                return redirect()->route('farmacia.activity')->with('success', 'Registro agregado con exito!.');
+            }
         } catch (\Illuminate\Database\QueryException $e) {
             DB::rollBack();
             return redirect()->route('farmacia.activity')->with('error', 'Ocurrió un error, por favor intente de nuevo!.');
