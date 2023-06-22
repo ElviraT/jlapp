@@ -11,11 +11,11 @@
     $(function() {
         $('#hlui').datetimepicker({
             useCurrent: false,
-            format: 'hh:mm',
+            format: 'hh:mm A',
         });
         $('#hluf').datetimepicker({
             useCurrent: false,
-            format: 'hh:mm',
+            format: 'hh:mm A',
         });
         $("#hlui").on("dp.change", function(e) {
             $('#hluf').data("DateTimePicker").minDate(e.date);
@@ -25,11 +25,11 @@
         });
         $('#hmai').datetimepicker({
             useCurrent: false,
-            format: 'hh:mm',
+            format: 'hh:mm A',
         });
         $('#hmaf').datetimepicker({
             useCurrent: false,
-            format: 'hh:mm',
+            format: 'hh:mm A',
         });
         $("#hmai").on("dp.change", function(e) {
             $('#hmaf').data("DateTimePicker").minDate(e.date);
@@ -39,11 +39,11 @@
         });
         $('#hmii').datetimepicker({
             useCurrent: false,
-            format: 'hh:mm',
+            format: 'hh:mm A',
         });
         $('#hmif').datetimepicker({
             useCurrent: false,
-            format: 'hh:mm',
+            format: 'hh:mm A',
         });
         $("#hmii").on("dp.change", function(e) {
             $('#hmif').data("DateTimePicker").minDate(e.date);
@@ -53,11 +53,11 @@
         });
         $('#hjui').datetimepicker({
             useCurrent: false,
-            format: 'hh:mm',
+            format: 'hh:mm A',
         });
         $('#hjuf').datetimepicker({
             useCurrent: false,
-            format: 'hh:mm',
+            format: 'hh:mm A',
         });
         $("#hjui").on("dp.change", function(e) {
             $('#hjuf').data("DateTimePicker").minDate(e.date);
@@ -67,11 +67,11 @@
         });
         $('#hvii').datetimepicker({
             useCurrent: false,
-            format: 'hh:mm',
+            format: 'hh:mm A',
         });
         $('#hvif').datetimepicker({
             useCurrent: false,
-            format: 'hh:mm',
+            format: 'hh:mm A',
         });
         $("#hvii").on("dp.change", function(e) {
             $('#hvif').data("DateTimePicker").minDate(e.date);
@@ -81,11 +81,11 @@
         });
         $('#hsai').datetimepicker({
             useCurrent: false,
-            format: 'hh:mm',
+            format: 'hh:mm A',
         });
         $('#hsaf').datetimepicker({
             useCurrent: false,
-            format: 'hh:mm',
+            format: 'hh:mm A',
         });
         $("#hsai").on("dp.change", function(e) {
             $('#hsaf').data("DateTimePicker").minDate(e.date);
@@ -95,11 +95,11 @@
         });
         $('#hdoi').datetimepicker({
             useCurrent: false,
-            format: 'hh:mm',
+            format: 'hh:mm A',
         });
         $('#hdof').datetimepicker({
             useCurrent: false,
-            format: 'hh:mm',
+            format: 'hh:mm A',
         });
         $("#hdoi").on("dp.change", function(e) {
             $('#hdof').data("DateTimePicker").minDate(e.date);
