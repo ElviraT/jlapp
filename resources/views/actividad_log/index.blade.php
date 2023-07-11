@@ -62,7 +62,7 @@
         </div>
     </div>
 @endsection
-<!-- Modal -->
+<!-- Modal Actividad -->
 <div class="modal fade" id="Activity_logModal" tabindex="-1" role="dialog" aria-labelledby="Activity_logModalLabel"
     aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
@@ -75,6 +75,7 @@
                     @csrf
                     <div class="col-md-12">
                         <div class="row">
+                            <input type="hidden" id="id_muestra">
                             <div class="col-md-9 mb-3">
                                 <label for="zona">{{ 'Farmacia' }}</label>
                                 <select id="idPharmacy" name="idPharmacy" class="input-app" style="width: 100%">
@@ -98,13 +99,13 @@
                                     <div class="row p-2 mb-3" style="border: 1px solid #999797">
                                         <div class="col-md-6 mb-3">
                                             <label>{{ 'Medicina' }}</label>
-                                            <select id="id_muestra" name="idProduct" class="input-app"
-                                                style="width: 100%">
-                                                <option></option>
-                                                @foreach ($muestras as $muestra)
-                                                    <option value="{{ $muestra->id }}">{{ $muestra->name }}</option>
-                                                @endforeach
-                                            </select>
+                                            <div class="input-group">
+                                                <input type="text" id="name_muestra" class="input-app" readonly>
+                                                <div class="input-group-btn">
+                                                    <button type="button" class="btn btn-info" data-toggle="modal"
+                                                        data-target="#CatalogoModal">{{ 'Catálogo' }}</button>
+                                                </div>
+                                            </div>
                                         </div>
                                         <div class="col-md-6 mb-3">
                                             <label>{{ 'Cantidad' }}</label>
@@ -178,6 +179,48 @@
             </form>
         </div>
     </div>
+</div>
+{{-- Modal catálogo --}}
+<div class="modal fade" id="CatalogoModal" tabindex="-1" role="dialog" aria-labelledby="Catalogo_ModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content p-2">
+            <div class="modal-header">
+                <h5 class="modal-title" id="CatalogoModalLabel">Agregar Medicina</h5>
+                <button type="button" class="close btn btn-light" data-dismiss="modal"
+                    aria-hidden="true">×</button>
+            </div>
+            <div class="modal-body">
+                <div class="col-md-12" style="border: 1px solid #999797">
+                    <div class="row p-3">
+                        <table id="TablaCatalogo" class="table table-hover" style="width: 100%">
+                            <thead>
+                                <tr>
+                                    <th hidden>id</th>
+                                    <th>Imagen</th>
+                                    <th>Nombre</th>
+                                    <th>Precio</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!--Ingreso un id al tbody-->
+                                @foreach ($muestras as $muestra)
+                                    <tr style="cursor: hand">
+                                        <td hidden>{{ $muestra->id }}</td>
+                                        <td><img class="img-fluid img-drogueria"
+                                                src="{{ env('APP_URL_WEB') . $muestra->img }}"></td>
+                                        <td>{{ $muestra->name }}</td>
+                                        <td>{{ $muestra->price_tf }}</td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 </div>
 @section('js')
     @include('actividad_log.js')

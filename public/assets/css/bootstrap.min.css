@@ -2919,6 +2919,7 @@ textarea.form-control-lg {
     width: 100%;
 }
 .input-group > .form-control,
+.input-group > .input-app,
 .input-group > .form-floating,
 .input-group > .form-select {
     position: relative;

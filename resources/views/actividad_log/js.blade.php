@@ -1,5 +1,14 @@
 <script>
     $(document).ready(function() {
+        $('#TablaCatalogo').DataTable({
+            dom: 'frtp',
+            pageLength: 5,
+            "language": {
+                "url": "//cdn.datatables.net/plug-ins/1.10.16/i18n/Spanish.json"
+            },
+        });
+    });
+    $(document).ready(function() {
         $("#jornada").on('change', function(e) {
             if ($(this).is(":checked")) {
                 $('#transferencia').attr('hidden', true);
@@ -15,13 +24,14 @@
 
     function RefrescaProducto() {
         var sel = $('#id_muestra').val('');
+        var text = $('#name_muestra').val('');
         var cantidad = $('#id_cantidad').val('');
     }
 
     function agregarProducto() {
 
-        var sel = $('#id_muestra').find(':selected').val(); //Capturo el Value del Producto
-        var text = $('#id_muestra').find(':selected').text(); //Capturo el Nombre del Producto- Texto dentro del Select
+        var sel = $('#id_muestra').val(); //Capturo el Value del Producto
+        var text = $('#name_muestra').val(); //Capturo el Nombre del Producto- Texto dentro del Select
         var pharsel = $('#idPharmacyT').find(':selected').val(); //Capturo el Value del Producto
         var phartext = $('#idPharmacyT').find(':selected')
             .text(); //Capturo el Nombre del Producto- Texto dentro del Select
@@ -60,5 +70,15 @@
             url = url.replace(':id', id);
             $(location).attr('href', url);
         }
+    });
+
+    $('#TablaCatalogo tbody').on('dblclick', 'tr', function() {
+        var tabla = $('#TablaCatalogo').DataTable();
+        var tr = tabla.row($(this).closest('tr')).data();
+        $('#id_muestra').val(tr[0]);
+        $('#name_muestra').val(tr[2]);
+        $('#CatalogoModal .close').click();
+        console.log(tr);
+
     });
 </script>
