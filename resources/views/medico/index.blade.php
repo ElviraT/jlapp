@@ -39,7 +39,8 @@
                                 <select id="idZone" name="idZone" class="input-app" style="width: 100%">
                                     <option></option>
                                     @foreach ($zones as $zone)
-                                        <option value="{{ $zone->id }}">{{ $zone->name }}</option>
+                                        <option value="{{ $zone->id }}">{{ $zone->city->name . ' - ' . $zone->name }}
+                                        </option>
                                     @endforeach
                                 </select>
                             </div>

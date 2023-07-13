@@ -6,13 +6,13 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class Zone extends Model
+class City extends Model
 {
     use HasFactory;
-    protected $table = 'zones';
+    protected $table = 'cities';
 
-    public function city(): BelongsTo
+    public function zone(): BelongsTo
     {
-        return $this->belongsTo(City::class, 'idCity');
+        return $this->belongsTo(Zone::class, 'idCity');
     }
 }
