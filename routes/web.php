@@ -39,12 +39,14 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/farmacia/store', [FarmaciaController::class, 'store'])->name('farmacia.store');
     Route::get('/actividad_log', [FarmaciaController::class, 'activity'])->name('farmacia.activity');
     Route::post('/actividad_log/add', [FarmaciaController::class, 'activity_store'])->name('farmacia.actividad.store');
+    Route::get('/list-farmacia', [FarmaciaController::class, 'list'])->name('list_farmacia.index');
 
     // medico
     Route::get('/medico', [MedicoController::class, 'index'])->name('medico.index');
     Route::post('/medico/store', [MedicoController::class, 'store'])->name('medico.store');
     Route::get('/actividad', [MedicoController::class, 'activity'])->name('medico.activity');
     Route::post('/actividad/add', [MedicoController::class, 'activity_store'])->name('actividad.store');
+    Route::get('/list-medico', [MedicoController::class, 'list'])->name('list_medical.index');
 
     // cambio de rol
     Route::get('/cambio-rol/{rol}', [DashboardController::class, 'rol'])->name('cambio.rol');

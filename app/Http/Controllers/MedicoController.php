@@ -30,6 +30,7 @@ class MedicoController extends Controller
         $data_med = [
             'name' => $data->name,
             'last_name' => $data->last_name,
+            'email' => $data->email,
             'idSpecialty' => $data->idSpecialty,
             'idZone' => $data->idZone,
             'idModality' => $data->idModality,
@@ -80,42 +81,45 @@ class MedicoController extends Controller
     {
         $medicos = Medical::all();
         $muestras = Product::all();
-        $activities= Activity::all();
-        return view('actividad.index', compact('activities','medicos','muestras'));
+        $activities = Activity::all();
+        return view('actividad.index', compact('activities', 'medicos', 'muestras'));
     }
 
     public function activity_store()
     {
         $data = array();
-        foreach($_POST as $key => $value) {  //Recibo el los valores por POST 
-          $data[$key] = $value;  
-       }
+        foreach ($_POST as $key => $value) {  //Recibo el los valores por POST 
+            $data[$key] = $value;
+        }
 
-       $activity = [
-        'idMedico' => $data['idMedico'],
-        'observations' => $data['observation']
+        $activity = [
+            'idMedico' => $data['idMedico'],
+            'observations' => $data['observation']
         ];
-    
+
         try {
             DB::beginTransaction();
             $act = Activity::create($activity);
 
-            for($i=0; $i<count($data['cantidad']); $i ++ ){
+            for ($i = 0; $i < count($data['cantidad']); $i++) {
                 $detalle = [
                     'idProduct' => $data['muestra_id'][$i],
                     'idActivity' => $act->id,
                     'cantidad' => $data['cantidad'][$i]
                 ];
-        
+
                 MedicalSample::create($detalle);
-            }        
+            }
             DB::commit();
             return redirect()->route('medico.activity')->with('success', 'Registro agregado con exito!.');
         } catch (\Illuminate\Database\QueryException $e) {
             DB::rollBack();
             return redirect()->route('medico.activity')->with('error', 'Ocurrió un error, por favor intente de nuevo!.');
         }
-       
-        
+    }
+    public function list()
+    {
+        $medicals = Medical::where('idZone', auth()->user()->UserZone[0]->idZone)->where('status', 1)->get();
+        return view('list_medical.index', compact('medicals'));
     }
 }

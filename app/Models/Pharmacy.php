@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Pharmacy extends Model
 {
@@ -17,7 +18,7 @@ class Pharmacy extends Model
         'rif',
         'sada',
         'sicm',
-        'dicm',
+        'email',
         'telefono',
         'direccion',
         'idZone',
@@ -34,5 +35,10 @@ class Pharmacy extends Model
     public function Contact(): HasOne
     {
         return $this->hasOne(Contact::class, 'idPharmacy');
+    }
+
+    public function zone(): BelongsTo
+    {
+        return $this->belongsTo(Zone::class, 'idZone');
     }
 }

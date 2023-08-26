@@ -18,6 +18,10 @@
                                 <input type="text" name="last_name" id="last_name" required>
                             </div>
                             <div class="col-md-6 mb-3">
+                                <label>{{ 'Email' }}</label>
+                                <input type="email" name="email" id="email" required>
+                            </div>
+                            <div class="col-md-6 mb-3">
                                 <label>{{ 'Matricula' }}</label>
                                 <input type="text" name="matricula" id="matricula" required>
                             </div>

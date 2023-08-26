@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Medical extends Model
 {
@@ -14,6 +15,7 @@ class Medical extends Model
     protected $fillable = [
         'name',
         'last_name',
+        'email',
         'idSpecialty',
         'idZone',
         'idModality',
@@ -24,6 +26,15 @@ class Medical extends Model
     ];
     public function Activity(): HasMany
     {
-       return $this->hasMany(Activity::class, 'id');
+        return $this->hasMany(Activity::class, 'id');
+    }
+
+    public function zone(): BelongsTo
+    {
+        return $this->belongsTo(Zone::class, 'idZone');
+    }
+    public function Specialty(): BelongsTo
+    {
+        return $this->belongsTo(Specialty::class, 'idSpecialty');
     }
 }

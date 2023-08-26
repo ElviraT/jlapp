@@ -132,4 +132,10 @@ class FarmaciaController extends Controller
             return redirect()->route('farmacia.activity')->with('error', 'Ocurrió un error, por favor intente de nuevo!.');
         }
     }
+
+    public function list()
+    {
+        $pharmacies = Pharmacy::where('idZone', auth()->user()->UserZone[0]->idZone)->where('status', 1)->get();
+        return view('list_farmacia.index', compact('pharmacies'));
+    }
 }

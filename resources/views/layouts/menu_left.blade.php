@@ -29,6 +29,12 @@
                     </a>
                 </li>
                 <li class="menu-item">
+                    <a href="{{ route('list_farmacia.index') }}" class="menu-link">
+                        <span class="menu-icon"><i class="fa fa-medkit"></i></span>
+                        <span class="menu-text"> Farmacias por Zona</span>
+                    </a>
+                </li>
+                <li class="menu-item">
                     <a href="{{ route('farmacia.activity') }}" class="menu-link">
                         <span class="menu-icon">
                             <i class="fas fa-calendar-check"></i>
@@ -42,6 +48,12 @@
                     <a href="{{ route('medico.index') }}" class="menu-link">
                         <span class="menu-icon"><i class="fas fa-user-md"></i></span>
                         <span class="menu-text"> Medico</span>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="{{ route('list_medical.index') }}" class="menu-link">
+                        <span class="menu-icon"><i class="fa fa-medkit"></i></span>
+                        <span class="menu-text"> Medicos por Zona</span>
                     </a>
                 </li>
                 <li class="menu-item">

@@ -26,8 +26,8 @@
                                 <input type="text" name="sicm" id="sicm" required>
                             </div>
                             <div class="col-md-4 mb-3">
-                                <label>{{ 'DICM' }}</label>
-                                <input type="text" name="dicm" id="dicm" required>
+                                <label>{{ 'Email' }}</label>
+                                <input type="email" name="email" id="email" required>
                             </div>
                             <div class="col-md-4 mb-3">
                                 <label>{{ 'Teléfono' }}</label>
