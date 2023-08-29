@@ -8,6 +8,7 @@ use App\Models\City;
 use App\Models\Medical;
 use App\Models\Zone;
 use App\Models\Medicine_category;
+use Illuminate\Support\Facades\DB;
 
 class ComboController extends Controller
 {
@@ -30,7 +31,12 @@ class ComboController extends Controller
     public function speciality_d($specialityId)
     {
         $idspecialidad = Medical::where('id', $specialityId)->first();
-        $category = Medicine_category::where('idSpeciality', $idspecialidad->idSpecialty)->get();
-        return response()->json($category);
+        $products = DB::table('products')
+            ->join('medicine_categories', 'products.idCategory', '=', 'medicine_categories.id')
+            ->select('products.id', 'products.name')
+            ->where('medicine_categories.idSpeciality',  $idspecialidad->idSpecialty)
+            ->get();
+
+        return response()->json($products);
     }
 }
