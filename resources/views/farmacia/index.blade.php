@@ -9,36 +9,64 @@
                     <div class="col-md-12">
                         <div class="row">
                             <input type="hidden" name="id" id="modal_add_pharmacy_id" value="0">
-                            <div class="col-md-4 mb-3">
+                            <div class="col-md-6 mb-3">
                                 <label>{{ 'Nombre' }}</label>
                                 <input type="text" name="name" id="name" required>
                             </div>
-                            <div class="col-md-4 mb-3">
+                            <div class="col-md-6 mb-3">
                                 <label>{{ 'RIF' }}</label>
                                 <input type="text" name="rif" id="rif" required>
                             </div>
-                            <div class="col-md-4 mb-3">
+                            <div class="col-md-6 mb-3">
                                 <label>{{ 'SADA' }}</label>
                                 <input type="text" name="sada" id="sada" required>
                             </div>
-                            <div class="col-md-4 mb-3">
+                            <div class="col-md-6 mb-3">
                                 <label>{{ 'SICM' }}</label>
                                 <input type="text" name="sicm" id="sicm" required>
                             </div>
-                            <div class="col-md-4 mb-3">
+                            <div class="col-md-6 mb-3">
                                 <label>{{ 'Email' }}</label>
                                 <input type="email" name="email" id="email" required>
                             </div>
-                            <div class="col-md-4 mb-3">
+                            <div class="col-md-6 mb-3">
                                 <label>{{ 'Teléfono' }}</label>
                                 <input type="text" name="telefono" id="telefono" required>
                             </div>
-                            <div class="col-md-4 mb-3">
+                            <div class="col-md-6 mb-3">
+                                <label for="country">{{ 'País' }}</label>
+                                <select id="country" name="idCountry" class="input-app" style="width: 100%">
+                                    <option></option>
+                                    @foreach ($countries as $country)
+                                        <option value="{{ $country->id }}">{{ $country->name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="state">{{ 'Estado' }}</label>
+                                <select id="state" name="idState" class="input-app" style="width: 100%" disabled>
+                                    <option></option>
+                                    @foreach ($states as $state)
+                                        <option value="{{ $state->id }}">{{ $state->name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="city">{{ 'Ciudad' }}</label>
+                                <select id="city" name="idCity" class="input-app" style="width: 100%" disabled>
+                                    <option></option>
+                                    @foreach ($cities as $city)
+                                        <option value="{{ $city->id }}">{{ $city->name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="col-md-6 mb-3">
                                 <label for="zona">{{ 'Zona' }}</label>
-                                <select id="idZone" name="idZone" class="input-app" style="width: 100%">
+                                <select id="zone" name="idZone" class="input-app" style="width: 100%" disabled>
                                     <option></option>
                                     @foreach ($zones as $zone)
-                                        <option value="{{ $zone->id }}">{{ $zone->city->name . ' - ' . $zone->name }}
+                                        <option value="{{ $zone->id }}">
+                                            {{ $zone->city->name . ' - ' . $zone->name }}
                                         </option>
                                     @endforeach
                                 </select>
@@ -87,4 +115,7 @@
             </form>
         </div>
     </div>
+@endsection
+@section('js')
+    @include('farmacia.js')
 @endsection

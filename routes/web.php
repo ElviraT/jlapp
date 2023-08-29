@@ -6,6 +6,7 @@ use App\Http\Controllers\MedicoController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\PDFController;
+use App\Http\Controllers\ComboController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -40,6 +41,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/actividad_log', [FarmaciaController::class, 'activity'])->name('farmacia.activity');
     Route::post('/actividad_log/add', [FarmaciaController::class, 'activity_store'])->name('farmacia.actividad.store');
     Route::get('/list-farmacia', [FarmaciaController::class, 'list'])->name('list_farmacia.index');
+    Route::get('/farmacia/{farmacium}', [FarmaciaController::class, 'edit'])->name('farmacia.edit');
+    Route::post('/farmacia/update', [FarmaciaController::class, 'update'])->name('farmacia.update');
 
     // medico
     Route::get('/medico', [MedicoController::class, 'index'])->name('medico.index');
@@ -47,6 +50,16 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/actividad', [MedicoController::class, 'activity'])->name('medico.activity');
     Route::post('/actividad/add', [MedicoController::class, 'activity_store'])->name('actividad.store');
     Route::get('/list-medico', [MedicoController::class, 'list'])->name('list_medical.index');
+    Route::get('/medico/{medico}', [MedicoController::class, 'edit'])->name('medico.edit');
+    Route::post('/medico/update', [MedicoController::class, 'update'])->name('medico.update');
+
+    // COMBOS
+    // COMBO ESTADOS
+    Route::get('direccion/ciudad/{countryId}', [ComboController::class, 'estado_d']);
+    // COMBO CIUDAD
+    Route::get('direccion/zona/{stateId}', [ComboController::class, 'ciudad_d']);
+    // COMBO ZONA
+    Route::get('direccion/combo-zona/{cityId}', [ComboController::class, 'zona_d']);
 
     // cambio de rol
     Route::get('/cambio-rol/{rol}', [DashboardController::class, 'rol'])->name('cambio.rol');

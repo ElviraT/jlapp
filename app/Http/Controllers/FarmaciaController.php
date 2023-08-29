@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Events\TransferEvent;
 use Illuminate\Http\Request;
 use App\Models\Zone;
+use App\Models\Country;
+use App\Models\State;
+use App\Models\City;
 use App\Models\Pharmacy;
 use App\Models\Contact;
 use App\Models\Product;
@@ -21,7 +24,11 @@ class FarmaciaController extends Controller
     public function index()
     {
         $zones = Zone::all();
-        return view('farmacia.index', compact('zones'));
+        $countries = Country::all();
+        $states = State::all();
+        $cities = City::all();
+
+        return view('farmacia.index', compact('cities', 'countries', 'states', 'zones'));
     }
 
     public function store(Request $data)
@@ -31,7 +38,7 @@ class FarmaciaController extends Controller
             'rif' => $data->rif,
             'sada' => $data->sada,
             'sicm' => $data->sicm,
-            'dicm' => $data->dicm,
+            'email' => $data->email,
             'telefono' => $data->telefono,
             'direccion' => $data->direccion,
             'idZone' => $data->idZone
@@ -61,7 +68,7 @@ class FarmaciaController extends Controller
 
     public function activity()
     {
-        $farmacias = Pharmacy::all();
+        $farmacias = Pharmacy::where('idZone', auth()->user()->UserZone[0]->idZone)->get();
         // $muestras = Product::all();
         $muestras = Product::whereRaw('quantity_tf > quantity_min')->where('available', 1)->get();
         $activities = ActivityLogF::all();
@@ -135,7 +142,56 @@ class FarmaciaController extends Controller
 
     public function list()
     {
+        $zones = Zone::all();
         $pharmacies = Pharmacy::where('idZone', auth()->user()->UserZone[0]->idZone)->where('status', 1)->get();
-        return view('list_farmacia.index', compact('pharmacies'));
+        return view('list_farmacia.index', compact('pharmacies', 'zones'));
+    }
+
+    public function edit(Pharmacy $farmacium)
+    {
+        $contacto = Contact::where('idPharmacy', $farmacium->id)->first();
+        return response()->json([$farmacium, $contacto]);
+        //
+    }
+    public function update(Request $data)
+    {
+        $data_phar = [
+            'name' => $data->name,
+            'rif' => $data->rif,
+            'sada' => $data->sada,
+            'sicm' => $data->sicm,
+            'email' => $data->email,
+            'telefono' => $data->telefono,
+            'direccion' => $data->direccion,
+            'idZone' => $data->idZone
+        ];
+        $data_contact = [
+            'name' => $data->namec,
+            'last_name' => $data->last_name,
+            'telephone' => $data->telephone,
+            'telephone2' => $data->telephone2
+        ];
+        if ($data->status == 'on') {
+            $status = 1;
+        } else {
+            $status = 0;
+        }
+        try {
+            DB::beginTransaction();
+
+            $array    = array('status' => $status);
+            $resultado = array_merge($data_phar, $array);
+
+            $pharmacy = Pharmacy::find($data->id);
+            $pharmacy->update($resultado);
+
+            $contact = Contact::where('idPharmacy', $data->id);
+            $contact->update($data_contact);
+            DB::commit();
+            return redirect()->route('list_farmacia.index')->with('success', 'Farmacia actualizada con exito!.');
+        } catch (\Illuminate\Database\QueryException $e) {
+            DB::rollBack();
+            return redirect()->route('list_farmacia.index')->with('error', 'Ocurrió un error, por favor intente de nuevo!.');
+        }
     }
 }

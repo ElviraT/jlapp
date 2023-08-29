@@ -29,7 +29,7 @@
                                 <label>{{ 'Número de colegio' }}</label>
                                 <input type="text" name="numero_colegio" id="numero_colegio" required>
                             </div>
-                            <div class="col-md-4 mb-3">
+                            <div class="col-md-6 mb-3">
                                 <label for="especialidad">{{ 'Especialidad' }}</label>
                                 <select id="idSpecialty" name="idSpecialty" class="input-app" style="width: 100%">
                                     <option></option>
@@ -38,12 +38,40 @@
                                     @endforeach
                                 </select>
                             </div>
-                            <div class="col-md-4 mb-3">
+                            <div class="col-md-6 mb-3">
+                                <label for="country">{{ 'País' }}</label>
+                                <select id="country" name="idCountry" class="input-app" style="width: 100%">
+                                    <option></option>
+                                    @foreach ($countries as $country)
+                                        <option value="{{ $country->id }}">{{ $country->name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="state">{{ 'Estado' }}</label>
+                                <select id="state" name="idState" class="input-app" style="width: 100%" disabled>
+                                    <option></option>
+                                    @foreach ($states as $state)
+                                        <option value="{{ $state->id }}">{{ $state->name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="city">{{ 'Ciudad' }}</label>
+                                <select id="city" name="idCity" class="input-app" style="width: 100%" disabled>
+                                    <option></option>
+                                    @foreach ($cities as $city)
+                                        <option value="{{ $city->id }}">{{ $city->name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="col-md-6 mb-3">
                                 <label for="zona">{{ 'Zona' }}</label>
-                                <select id="idZone" name="idZone" class="input-app" style="width: 100%">
+                                <select id="zone" name="idZone" class="input-app" style="width: 100%" disabled>
                                     <option></option>
                                     @foreach ($zones as $zone)
-                                        <option value="{{ $zone->id }}">{{ $zone->city->name . ' - ' . $zone->name }}
+                                        <option value="{{ $zone->id }}">
+                                            {{ $zone->city->name . ' - ' . $zone->name }}
                                         </option>
                                     @endforeach
                                 </select>
