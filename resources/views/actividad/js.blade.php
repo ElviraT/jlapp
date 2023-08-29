@@ -33,4 +33,36 @@
             RefrescaProducto();
         });
     }
+    $(document).ready(function() {
+        // Agregamos un evento onChange al primer select
+        $('#Medico').on('change', function() {
+            var MedicoId = $(this).val(); // Obtenemos el valor seleccionado
+
+            if (MedicoId) {
+                // Si se ha seleccionado un país, hacemos una petición Ajax para obtener las zonaes correspondientes
+                $.ajax({
+                    url: 'categoria/' + MedicoId,
+                    type: 'GET',
+                    dataType: 'json',
+                    success: function(data) {
+                        // Limpiamos las opciones del segundo select
+                        $('#id_muestra').empty();
+                        $('#id_muestra').attr('disabled', false);
+
+                        // Agregamos las nuevas opciones al segundo select
+                        $('#id_muestra').append(
+                            '<option value="">Seleccione una muestra</option>');
+                        $.each(data, function(index, muestra) {
+                            $('#id_muestra').append('<option value="' + muestra.id +
+                                '">' +
+                                muestra.name + '</option>');
+                        });
+                    }
+                    // $('#id_muestra').change();
+                });
+
+
+            }
+        });
+    });
 </script>

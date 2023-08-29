@@ -57,7 +57,7 @@
                         <div class="row">
                             <div class="col-md-12 mb-3">
                                 <label for="zona">{{ 'Medico' }}</label>
-                                <select id="idMedico" name="idMedico" class="input-app" style="width: 100%">
+                                <select id="Medico" name="idMedico" class="input-app" style="width: 100%">
                                     <option></option>
                                     @foreach ($medicos as $medico)
                                         <option value="{{ $medico->id }}">
@@ -74,7 +74,8 @@
                                 <div class="row p-2 mb-3" style="border: 1px solid #999797">
                                     <div class="col-md-6 mb-3">
                                         <label>{{ 'Muestra' }}</label>
-                                        <select id="id_muestra" name="idProduct" class="input-app" style="width: 100%">
+                                        <select id="id_muestra" name="idProduct" class="input-app" style="width: 100%"
+                                            disabled>
                                             <option></option>
                                             @foreach ($muestras as $muestra)
                                                 <option value="{{ $muestra->id }}">{{ $muestra->name }}</option>

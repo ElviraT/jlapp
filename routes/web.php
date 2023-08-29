@@ -60,6 +60,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('direccion/zona/{stateId}', [ComboController::class, 'ciudad_d']);
     // COMBO ZONA
     Route::get('direccion/combo-zona/{cityId}', [ComboController::class, 'zona_d']);
+    // COMBO CATEGORIA
+    Route::get('categoria/{specialityId}', [ComboController::class, 'speciality_d']);
 
     // cambio de rol
     Route::get('/cambio-rol/{rol}', [DashboardController::class, 'rol'])->name('cambio.rol');
