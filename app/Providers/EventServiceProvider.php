@@ -4,6 +4,8 @@ namespace App\Providers;
 
 use App\Events\TransferEvent;
 use App\Listeners\TransferListener;
+use App\Events\ActivitymedEvent;
+use App\Listeners\ActivitymedListener;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
@@ -22,6 +24,9 @@ class EventServiceProvider extends ServiceProvider
         ],
         TransferEvent::class => [
             TransferListener::class,
+        ],
+        ActivitymedEvent::class => [
+            ActivitymedListener::class,
         ]
     ];
 

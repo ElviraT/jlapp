@@ -1,6 +1,6 @@
 <script>
     $(document).ready(function() {
-        $('#TablaCatalogo').DataTable({
+        $('#TablaCatalogo , #actividad').DataTable({
             dom: 'frtp',
             pageLength: 5,
             "language": {

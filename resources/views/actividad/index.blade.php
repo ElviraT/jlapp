@@ -53,6 +53,7 @@
             <form action="{{ route('actividad.store') }}" method="POST">
                 <div class="modal-body">
                     @csrf
+                    <input type="hidden" name="medico_not" id="medico_not">
                     <div class="col-md-12">
                         <div class="row">
                             <div class="col-md-12 mb-3">

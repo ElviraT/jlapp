@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use PDF;
 use App\Models\ActivityLogF;
+use App\Models\Activity;
 
 class PDFController extends Controller
 {
@@ -22,5 +23,16 @@ class PDFController extends Controller
 
         $pdf = PDF::loadView('pdf.index', $data);
         return $pdf->download('transferencia' . $id . '.pdf');
+    }
+    public function pdf_med($id)
+    {
+        $data = [
+            'title' => 'JL Pharma Medicinas',
+            'activity' => Activity::where('id', $id)->first(),
+        ];
+
+        $pdf = PDF::loadView('pdf.index_med', $data);
+
+        return $pdf->download('transferencia-medico' . $id . '.pdf');
     }
 }

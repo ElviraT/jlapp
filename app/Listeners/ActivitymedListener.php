@@ -3,12 +3,12 @@
 namespace App\Listeners;
 
 use App\Models\User;
-use App\Notifications\TransferNotification;
+use App\Notifications\ActivitymedNotification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Support\Facades\Notification;
 
-class TransferListener
+class ActivitymedListener
 {
     /**
      * Create the event listener.
@@ -24,8 +24,8 @@ class TransferListener
     public function handle(object $event): void
     {
         User::where('role', 'Admin')
-            ->each(function(User $user) use ($event){
-                Notification::send($user, new TransferNotification($event->transfer));
+            ->each(function (User $user) use ($event) {
+                Notification::send($user, new ActivitymedNotification($event->medtransfer));
             });
     }
 }

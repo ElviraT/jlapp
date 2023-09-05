@@ -12,15 +12,15 @@ class Activity extends Model
     use HasFactory;
     protected $table = 'activities';
     protected $fillable = [
-        'idMedico','observations'
+        'idMedico', 'observations', 'pedido'
     ];
 
     public function MedicalSample(): HasMany
     {
-       return $this->hasMany(MedicalSample::class, 'idActivity');
+        return $this->hasMany(MedicalSample::class, 'idActivity');
     }
     public function Medical(): BelongsTo
     {
-       return $this->belongsTo(Medical::class, 'idMedico');
+        return $this->belongsTo(Medical::class, 'idMedico');
     }
 }

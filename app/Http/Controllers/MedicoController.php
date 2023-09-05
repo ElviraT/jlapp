@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\ActivitymedEvent;
 use Illuminate\Http\Request;
 use App\Models\Specialty;
 use App\Models\Zone;
@@ -14,6 +15,8 @@ use App\Models\Timetable;
 use App\Models\Activity;
 use App\Models\MedicalSample;
 use App\Models\Product;
+use App\Models\User;
+use App\Notifications\ActivitymedNotification;
 use Illuminate\Support\Facades\DB;
 
 class MedicoController extends Controller
@@ -86,7 +89,7 @@ class MedicoController extends Controller
     public function activity()
     {
         $medicos = Medical::where('idZone', auth()->user()->UserZone[0]->idZone)->where('status', 1)->get();
-        $muestras = Product::all();
+        $muestras = Product::whereRaw('quantity_tf > quantity_min')->where('available', 1)->get();
         $activities = Activity::all();
         return view('actividad.index', compact('activities', 'medicos', 'muestras'));
     }
@@ -100,7 +103,8 @@ class MedicoController extends Controller
 
         $activity = [
             'idMedico' => $data['idMedico'],
-            'observations' => $data['observation']
+            'observations' => $data['observation'],
+            'pedido' => 'LA' . date('m/d/y/h/i', time()),
         ];
 
         try {
@@ -111,13 +115,19 @@ class MedicoController extends Controller
                 $detalle = [
                     'idProduct' => $data['muestra_id'][$i],
                     'idActivity' => $act->id,
-                    'cantidad' => $data['cantidad'][$i]
+                    'cantidad' => $data['cantidad'][$i],
+                    'product' => $data['muestra'][$i],
+                    'medico' => $data['medico_not']
                 ];
 
-                MedicalSample::create($detalle);
+                $medtransfer = MedicalSample::create($detalle);
+                $product = Product::find($data['muestra_id'][$i]);
+                $product->update(['quantity_tf' => DB::raw('quantity_tf - ' . $data['cantidad'][$i])]);
+
+                event(new ActivitymedEvent($medtransfer));
             }
             DB::commit();
-            return redirect()->route('medico.activity')->with('success', 'Registro agregado con exito!.');
+            return redirect()->route('medico.activity', ['id' => $act->id])->with('success', 'Registro agregado con exito!.');
         } catch (\Illuminate\Database\QueryException $e) {
             DB::rollBack();
             return redirect()->route('medico.activity')->with('error', 'Ocurrió un error, por favor intente de nuevo!.');

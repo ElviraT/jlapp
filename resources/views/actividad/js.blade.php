@@ -1,4 +1,13 @@
 <script type="text/javascript">
+    $(document).ready(function() {
+        $('#actividad').DataTable({
+            dom: 'frtp',
+            pageLength: 8,
+            "language": {
+                "url": "//cdn.datatables.net/plug-ins/1.10.16/i18n/Spanish.json"
+            },
+        });
+    });
     var j = 0;
 
     function RefrescaProducto() {
@@ -37,6 +46,7 @@
         // Agregamos un evento onChange al primer select
         $('#Medico').on('change', function() {
             var MedicoId = $(this).val(); // Obtenemos el valor seleccionado
+            var textmed = $('#Medico').find(':selected').text();
 
             if (MedicoId) {
                 // Si se ha seleccionado un país, hacemos una petición Ajax para obtener las zonaes correspondientes
@@ -60,9 +70,18 @@
                     }
                     // $('#id_muestra').change();
                 });
-
-
             }
+            $('#medico_not').val(textmed.trim());
         });
+    });
+
+    $(window).on("load", function(e) {
+        var idurl = new URLSearchParams(location.search);
+        var id = idurl.get('id');
+        if (id != null) {
+            let url = '{{ route('genera.pdf_med', ['id' => ':id']) }}';
+            url = url.replace(':id', id);
+            $(location).attr('href', url);
+        }
     });
 </script>

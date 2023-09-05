@@ -72,6 +72,7 @@ Route::middleware(['auth'])->group(function () {
     })->name('markAsRead');
 
     Route::get('pdf/{id}', [PDFController::class, 'index'])->name('genera.pdf');
+    Route::get('pdf-med/{id}', [PDFController::class, 'pdf_med'])->name('genera.pdf_med');
 });
 
 require __DIR__ . '/auth.php';
