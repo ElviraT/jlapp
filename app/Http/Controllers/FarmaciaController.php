@@ -15,6 +15,7 @@ use App\Models\ActivityLogF;
 use App\Models\RegisterTransfer;
 use App\Models\RegisterWorkingday;
 use App\Models\User;
+use App\Models\UserZone;
 use App\Notifications\TransferNotification;
 use Illuminate\Support\Facades\DB;
 use PDF;
@@ -68,8 +69,8 @@ class FarmaciaController extends Controller
 
     public function activity()
     {
-        $farmacias = Pharmacy::where('idZone', auth()->user()->UserZone[0]->idZone)->get();
-        // $muestras = Product::all();
+        $zoneIds = auth()->user()->UserZone->pluck('idZone')->toArray();
+        $farmacias = Pharmacy::whereIn('idZone', $zoneIds)->where('status', 1)->get();
         $muestras = Product::whereRaw('quantity_tf > quantity_min')->where('available', 1)->get();
         $activities = ActivityLogF::all();
         return view('actividad_log.index', compact('activities', 'farmacias', 'muestras'));
@@ -143,7 +144,8 @@ class FarmaciaController extends Controller
     public function list()
     {
         $zones = Zone::all();
-        $pharmacies = Pharmacy::where('idZone', auth()->user()->UserZone[0]->idZone)->where('status', 1)->get();
+        $zoneIds = auth()->user()->UserZone->pluck('idZone')->toArray();
+        $pharmacies = Pharmacy::whereIn('idZone', $zoneIds)->where('status', 1)->get();
         return view('list_farmacia.index', compact('pharmacies', 'zones'));
     }
 

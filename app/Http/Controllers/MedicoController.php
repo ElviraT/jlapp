@@ -88,7 +88,8 @@ class MedicoController extends Controller
 
     public function activity()
     {
-        $medicos = Medical::where('idZone', auth()->user()->UserZone[0]->idZone)->where('status', 1)->get();
+        $zoneIds = auth()->user()->UserZone->pluck('idZone')->toArray();
+        $medicos = Medical::whereIn('idZone', $zoneIds)->where('status', 1)->get();
         $muestras = Product::whereRaw('quantity_tf > quantity_min')->where('available', 1)->get();
         $activities = Activity::all();
         return view('actividad.index', compact('activities', 'medicos', 'muestras'));
@@ -138,7 +139,8 @@ class MedicoController extends Controller
         $zones = Zone::all();
         $specialities = Specialty::all();
         $modalities = Modality::all();
-        $medicals = Medical::where('idZone', auth()->user()->UserZone[0]->idZone)->where('status', 1)->get();
+        $zoneIds = auth()->user()->UserZone->pluck('idZone')->toArray();
+        $medicals = Medical::whereIn('idZone', $zoneIds)->where('status', 1)->get();
         return view('list_medical.index', compact('medicals', 'zones', 'specialities', 'modalities'));
     }
 
